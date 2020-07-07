@@ -1,11 +1,205 @@
 <!DOCTYPE html>
 <head>
-    <link rel="stylesheets" href="style.css">
-    <script
-    src="https://code.jquery.com/jquery-3.5.1.slim.js"
-    integrity="sha256-DrT5NfxfbHvMHux31Lkhxg42LY6of8TaYyK50jnxRnM="
-    crossorigin="anonymous"></script></head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
+    <link rel="stylesheet" href="style.css">
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+</head>
 <body>
-    <h1>Hello World</h1>
+    <header>
+        <div class = "overlay"></div>
+    </header>
+
+
+      <!--Navbar-->
+  <nav class="navbar navbar-expand-lg navbar-light blue-grey lighten-5 mb-4 navbarstyle">
+    <a class="navbar-brand">Looking for something?</a>
+  
+    <!-- Collapse button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span
+        class="navbar-toggler-icon"></span></button>
+  
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  
+      <!-- Links -->
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">link #1 <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">link #2</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">link #3</a>
+        </li>
+  
+        <!-- Dropdown -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">Dropdown</a>
+          <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="#">Dropdown #1</a>
+            <a class="dropdown-item" href="#">Dropdown #2</a>
+            <a class="dropdown-item" href="#">Dropdown #3</a>
+          </div>
+        </li>
+  
+      </ul>
+      <!-- Links -->
+  
+      <!-- Search form -->
+      <form class="form-inline">
+        <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+      </form>
+    </div>
+    <!-- Collapsible content -->
+  
+  </nav>
+  <!--/.Navbar-->
+
+  <div class="container">
+    <div class="row intro">
+        <div class="col-md-12">
+            <h1 class="title"> Hello World </h1>
+            <div class="line"></div>
+        </div>
+    </div>
+
+        <div class="row body-first">
+            <div class="col-md-6 leftside">
+                <p>We can put some content here</p>
+            </div>
+            <div class="col-md-6 rightside">
+                <p>And some content here</p>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+    <!--End Main content-->
+    <!--Footer Content-->
+    <div class="row footer">
+        <div class="col-md-12">
+          <footer class="page-footer font-small mdb-color lighten-3 pt-4 foot">
+          <div class="container text-center text-md-left">
+            <div class="row">
+              <div class="col-md-4 col-lg-3 mr-auto my-md-4 my-0 mt-4 mb-1">
+
+                <!-- API list -->
+                <h5 class="font-weight-bold text-uppercase mb-4">Api's used</h5>
+                  <ul class="list-unstyled">
+                    <li>
+                      <p class="API-1">API # 1</p>
+                    </li>
+                    <li>
+                      <p class="API-2">API #2</p>
+                    </li>
+                    <li>
+                      <p class="API-3">API #3</p>
+                    </li>
+                </ul>
+              </div>
+              <!-- Grid column -->
+              <hr class="clearfix w-100 d-md-none">
+
+              <!-- Grid column -->
+              <div class="col-md-2 col-lg-2 mx-auto my-md-4 my-0 mt-4 mb-1">
+
+                <!-- Members -->
+                <h5 class="font-weight-bold text-uppercase mb-4">MEMBERS</h5>
+
+                <ul class="list-unstyled">
+                  <li>
+                    <p> Logan McCann </p>
+                  </li>
+                  <li>
+                    <p> Juan Osorio </p>
+                  </li>
+                  <li>
+                    <p> Samantha Barrueta </p>
+                  </li>
+                  <li>
+                    <p> Prince Kumar  </p>
+                  </li>
+                </ul>
+
+              </div>
+              <!-- Grid column -->
+
+              <hr class="clearfix w-100 d-md-none">
+
+              <!-- Grid column -->
+              <div class="col-md-4 col-lg-3 mx-auto my-md-4 my-0 mt-4 mb-1">
+
+                <!-- Contact details -->
+                <h5 class="font-weight-bold text-uppercase mb-4">Address</h5>
+
+                <ul class="list-unstyled">
+                  <li>
+                    <p>
+                      <i class="fas fa-home mr-3"></i> Chicago, IL, 60605</p>
+                  </li>
+                  <li>
+                    <p>
+                      <i class="fas fa-envelope mr-3"></i> abc.gmail.com</p>
+                  </li>
+                  <li>
+                    <p>
+                      <i class="fas fa-phone mr-3"></i> 1-(234)-567-8910</p>
+                  </li>
+                  <li>
+                    <p>
+                      <i class="fas fa-print mr-3"></i> 1-(234)-567-8910</p>
+                  </li>
+                </ul>
+
+              </div>
+              <!-- Grid column -->
+
+              <hr class="clearfix w-100 d-md-none">
+
+              <!-- Grid column -->
+              <div class="col-md-2 col-lg-2 text-center mx-auto my-4">
+
+                <!-- Social buttons -->
+                <h5 class="font-weight-bold text-uppercase mb-4">Follow Us</h5>
+                <ul>
+                  <li class="logan">
+                    <a class="github-button" href="https://github.com/lrmccann" data-color-scheme="no-preference: light; light: light; dark: light;" data-size="large" data-show-count="true" aria-label="Follow @lrmccann on GitHub">Follow @lrmccann</a>
+                  </li>
+                  <li class="juan">
+                  <a class="github-button" href="https://github.com/juanwithouttheotter" data-color-scheme="no-preference: light; light: light; dark: light;" data-size="large" data-show-count="true" aria-label="Follow @juanwithouttheotter on GitHub">Follow @juanwithouttheotter</a>
+                  </li>
+                  <li class="sam">
+                  <a class="github-button" href="https://github.com/samanthabarrueta" data-color-scheme="no-preference: light; light: light; dark: light;" data-size="large" data-show-count="true" aria-label="Follow @samanthabarrueta on GitHub">Follow @samanthabarrueta</a>
+                  </li>
+                  <li class="prince">
+                  <a class="github-button" href="https://github.com/kumarprince3" data-color-scheme="no-preference: light; light: light; dark: light;" data-size="large" data-show-count="true" aria-label="Follow @kumarprince3 on GitHub">Follow @kumarprince3</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </footer>
+        </div>
+      </div>
+          <!-- END Footer Content-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script src="index.js"></script>
 </body>
