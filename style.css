@@ -13,8 +13,9 @@ header{
     text-align: center;
     width: 100%;
     height: 200px;
-    border: black solid 1px;
+    border-radius: 25px;
     background-color: tan;
+    margin-bottom: 1%;
 
  }
  /* end of head content */
@@ -22,7 +23,7 @@ header{
 
  /* Nav-bar */
 .navbarstyle{
-    background-color: slateblue;
+    background-color:gray;
     padding-right: 3%;
     position: relative;
     border: black 1px solid;
@@ -35,22 +36,24 @@ header{
  /* some body attributes */
  .body-first{
      height: 500px;
-     border: black 1px solid;
      width: 100%;
      margin-bottom: 5%;
  }
  .line{
+     border: black 1px solid;
      margin-top: 9%;
-     border: solid black 1px;
      margin-left: 20%;
      margin-right: 20%;
  }
  .leftside{
-    border-right: black 1px solid;
+    height: 100%;
+    border-radius: 25px;
     background-color: cyan;
     text-align: center;
  }
  .rightside{
+     height: 100%;
+    border-radius: 25px;
     background-color: crimson;
     text-align: center;
  }
@@ -58,11 +61,31 @@ header{
 
 
 
+
+ /* Modal Login Content */
+ .login-modal{
+     border: groove black 1px;
+ }
+.modal-title{
+     text-align: center;
+    font-size: large;
+    font-family: sans-serif;
+ }
+.submit{
+    border: green solid 1px;
+}
+
+
+ /* End Modal Login Content */
+
+
+
 /* footer attributes */
 .footer{
+    border-radius: 25px;
     margin-left: .5%;
     width: 100%;
-    height: 10%;
+    height:auto;
     border: black solid 2px;
     background-color: yellowgreen;
 }
