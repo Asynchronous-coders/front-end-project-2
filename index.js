@@ -20,6 +20,7 @@ $(document).ready(function (){
 
   };
   // End Filters Endpoint
+
   // List Ingredients
   listIngredients();
     function listIngredients() {
@@ -32,12 +33,12 @@ $(document).ready(function (){
             "x-rapidapi-key": "800dedb80dmsh5623edb79c19968p10818fjsnd60acfd537d3",
           }
         }).then(function (response) {
-          console.log(response)
           for(i = 0; i <= 100; i ++){
             $('.ingredientsOption').append("<div>" + response.drinks[i].strIngredient1  + "</div>" + "<br>"); 
           }
         });
         // End Ingredient List
+
         // List Glasses List
         listGlasses();
         function listGlasses() {
@@ -50,12 +51,12 @@ $(document).ready(function (){
                 "x-rapidapi-key": "800dedb80dmsh5623edb79c19968p10818fjsnd60acfd537d3",
               }
             }).then(function (response) {
-              console.log(response)
               for(i = 0; i <= 32; i ++){
                 $('.glassesOption').append("<div>" + response.drinks[i].strGlass  + "</div>" + "<br>"); 
               }
             });
         // End Glasses List
+
         // List Glasses List
 listCategories();
       function listCategories() {
@@ -68,9 +69,8 @@ listCategories();
               "x-rapidapi-key": "800dedb80dmsh5623edb79c19968p10818fjsnd60acfd537d3",
             }
           }).then(function (response) {
-            console.log(response)
             for(i = 0; i <= 32; i ++){
-              $('.categoriesOption').append("<div>" + response.drinks[i].strCategory  + "</div>" + "<br>"); 
+              $('.categoriesOption').append("<div>" + response.drinks[i].strCategory + "</div>" + "<br>"); 
             }
           });
       // End Glasses List
@@ -90,4 +90,20 @@ listCategories();
     return false
   });
   // end login button / modal function
-}}}});
+  
+// sign up button start
+$(document).on("click",".signUp",function(){
+  $("#signUpModal").modal('show');
+  $('myModal').modal('hide')
+  return false
+})
+//end sign up button
+
+// Search Button
+$(document).on("click", ".go" ,function(){
+  console.log("searched")
+})
+}
+  }
+    }
+     });

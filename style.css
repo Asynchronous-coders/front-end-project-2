@@ -1,6 +1,9 @@
 /* universal selector for body */
 body{
     height: 100%;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-image: url("../cutewallpaperidea.jpg")
+
 };
 
 /* head of page */
@@ -12,24 +15,49 @@ header{
 .intro{
     text-align: center;
     width: 100%;
-    height: 200px;
+    height: 300px;
     border-radius: 25px;
-    background-color: tan;
+    background-color: peachpuff;
+    border: coral dashed 6px;
     margin-bottom: 1%;
-
+ }
+ .image{
+    background-image: url("../intro.jpg");
  }
  /* end of head content */
 
 
  /* Nav-bar */
 .navbarstyle{
-    background-color:gray;
+    background-color:peachpuff;
     padding-right: 3%;
     position: relative;
     border: black 1px solid;
     width: 100%;
 }
+.ingredientsOption{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.glassesOption{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 
+}
+.categoriesOption{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+}
+.filterOption{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.searchBar{
+float: left;
+border: coral dashed 3px;
+}
+
+.go{
+    float: left;
+    border: coral dashed 3px;
+}
 
  /* end Nav-bar */
 
@@ -37,7 +65,7 @@ header{
  .body-first{
      height: 500px;
      width: 100%;
-     margin-bottom: 5%;
+     position: relative;
  }
  .line{
      border: black 1px solid;
@@ -48,23 +76,77 @@ header{
  .leftside{
     height: 100%;
     border-radius: 25px;
-    background-color: cyan;
+    background-color: peachpuff;
+    border: coral dashed 6px;
     text-align: center;
  }
  .rightside{
      height: 100%;
     border-radius: 25px;
-    background-color: crimson;
+    background-color: peachpuff;
+    border: coral dashed 6px;
     text-align: center;
  }
+    .leftsideText{
+    text-align: center;
+    font-size: large;
+    padding-top: 2%;
+    }
+    .rightsideText{
+    text-align: center;
+    font-size: large;
+    padding-top: 2%;
+    }
+    /* second set of containers */
+    .body-second{
+    height: 500px;
+    margin-bottom: 5%;
+    width: 100%;
+    }
+    .line{
+    border: black 1px solid;
+    margin-top: 9%;
+    margin-left: 20%;
+    margin-right: 20%;
+    }
+    .leftsideTwo{
+    height: 100%;
+    border-radius: 25px;
+    background-color: peachpuff;
+    border: coral dashed 6px;
+    text-align: center;
+    margin-top: 1%;
+    float: left;
+    }
+    .rightsideTwo{
+    height: 100%;
+    border-radius: 25px;
+    background-color: peachpuff;
+    text-align: center;
+    border: coral dashed 6px;
+    margin-top: 1%;
+    float: left;
+    }
+    .leftsideTextTwo{
+    text-align: center;
+    font-size: large;
+    padding-top: 2%;
+    }
+    .rightsideTextTwo{
+    text-align: center;
+    font-size: large;
+    padding-top: 2%;
+    }
 
 
 
+    /* End body attributes
 
 
  /* Modal Login Content */
  .login-modal{
      border: groove black 1px;
+
  }
 .modal-title{
      text-align: center;
@@ -78,7 +160,15 @@ header{
 
  /* End Modal Login Content */
 
+ /* Modal Sign up Content */
+.signUp{
+    text-align: center;
+    margin-right: 10%;
+    border: groove black 1px;
 
+}
+
+ /* End Modal Sign Up
 
 /* footer attributes */
 .footer{
@@ -86,8 +176,8 @@ header{
     margin-left: .5%;
     width: 100%;
     height:auto;
-    border: black solid 2px;
-    background-color: yellowgreen;
+    border: coral dashed 6px;
+    background-color: peachpuff;
 }
 
 /* Section for unordered list attributes */ 
@@ -103,15 +193,15 @@ header{
 /* GitHub spacing for buttons */
  .logan{
 	list-style-type: none;
-	 margin-bottom: 12%;
+	 margin-bottom: 8%;
  }
  .juan{
 	list-style-type: none;
-	margin-bottom: 12%;
+	margin-bottom: 8%;
 }
 .sam{
 	list-style-type: none;
-	margin-bottom: 12%;
+	margin-bottom: 8%;
 }
 .prince{
 	list-style-type: none;
