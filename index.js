@@ -74,14 +74,8 @@ listCategories();
             }
           });
       // End Glasses List
-        
-
-
-
-
-
-
-
+  // Search bar / find drink by name
+ 
 
   // login button / modal function
 
