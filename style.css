@@ -2,8 +2,7 @@
 body{
     height: 100%;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    background-image: url("../cutewallpaperidea.jpg")
-
+    background: linear-gradient(110deg, rgba(209, 207, 207, 0) 60%, rgb(199, 199, 199) 60%);
 };
 
 /* head of page */
@@ -11,32 +10,50 @@ header{
     position: relative;
     width: 100%;
     height: 200px;
+
 }
 .title{
-    margin-top: 3%;
+margin-bottom: 5%;
 }
+
 .intro{
     text-align: center;
     width: 100%;
     height: 300px;
     border-radius: 25px;
-    background-color: peachpuff;
-    border: coral dashed 6px;
-    margin-bottom: 1%;
+
  }
- .image{
-    background-image: url("../intro.jpg");
+
+ .into-pic{
+     background-image: url("../intro-use.jpg");
+     background-size: cover;
+     height: 500px;
+     width: 100%;
+     border: black groove 1px;
+     align-self: center;
+     margin-bottom: -20%;
+     margin-top: -1.6%;
+     
+ }
+ .intro-text{
+     text-align: center;
+ }
+ .line-one{
+     border: groove 1px black;
+     margin-left: 30%;
+     margin-right: 30%;
+     margin-bottom: 5%;
  }
  /* end of head content */
 
 
  /* Nav-bar */
 .navbarstyle{
-    background-color:peachpuff;
     padding-right: 3%;
     position: relative;
     border: black 1px solid;
     width: 100%;
+    background-color: gray;
 }
 .ingredientsOption{
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -52,58 +69,41 @@ header{
 .filterOption{
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
-.searchBar{
-float: left;
-border: coral dashed 3px;
+
+
+.searchBar-pic{
+    align-self: center;
+    text-align: center;
+    margin:0 auto;
+    }
+.profilebtn{
+    float: right;
 }
 
 .go{
     float: left;
+    border: groove black 1px;
 }
 
  /* end Nav-bar */
 
  /* some body attributes */
- .body-first{
-     height: 500px;
-     width: 100%;
-     position: relative;
- }
- .line{
-     border: black 1px solid;
-     margin-top: 9%;
-     margin-left: 20%;
-     margin-right: 20%;
- }
- .leftside{
-    height: 100%;
+.content-first{
+    border: groove black 1px;
     border-radius: 25px;
-    background-color: peachpuff;
-    border: coral dashed 6px;
-    text-align: center;
- }
- .rightside{
-     height: 100%;
-    border-radius: 25px;
-    background-color: peachpuff;
-    border: coral dashed 6px;
-    text-align: center;
- }
-    .leftsideText{
+    height: 400px;
+    background-color: rgb(167, 167, 167);
+}
+.content-first-text{
     text-align: center;
     font-size: large;
-    padding-top: 5%;
-    }
-    .rightsideText{
-    text-align: center;
-    font-size: large;
-    padding-top: 5%;
-    }
+}
     /* second set of containers */
     .body-second{
     height: 500px;
     margin-bottom: 5%;
     width: 100%;
+
     }
     .line{
     border: black 1px solid;
@@ -114,20 +114,20 @@ border: coral dashed 3px;
     .leftsideTwo{
     height: 100%;
     border-radius: 25px;
-    background-color: peachpuff;
-    border: coral dashed 6px;
     text-align: center;
     margin-top: 1%;
     float: left;
+    border: black groove 1px;
+    background-color: rgb(167, 167, 167);
     }
     .rightsideTwo{
     height: 100%;
     border-radius: 25px;
-    background-color: peachpuff;
     text-align: center;
-    border: coral dashed 6px;
     margin-top: 1%;
-    float: left;
+    float: right;
+    border: black groove 1px;
+    background-color: rgb(167, 167, 167);
     }
     .leftsideTextTwo{
     text-align: center;
@@ -156,7 +156,7 @@ border: coral dashed 3px;
     font-family: sans-serif;
  }
 .submit{
-border: black solid 1px;
+border: black groove 1px;
 }
 
 
@@ -179,8 +179,8 @@ border: black solid 1px;
     margin-left: .5%;
     width: 100%;
     height:auto;
-    border: coral dashed 6px;
-    background-color: peachpuff;
+    border: groove 1px black;
+    background-color: rgb(167, 167, 167);
 }
 
 /* Section for unordered list attributes */ 
