@@ -24,8 +24,8 @@ margin-bottom: 5%;
 
  }
 
- .into-pic{
-     background-image: url("../intro-use.jpg");
+ .intro-pic{
+     background-image: url("/images/intro-use.jpg");
      background-size: cover;
      height: 500px;
      width: 100%;
@@ -72,9 +72,9 @@ margin-bottom: 5%;
 
 
 .searchBar-pic{
-    align-self: center;
-    text-align: center;
+    display:grid;
     margin:0 auto;
+    margin-top: 9%;
     }
 .profilebtn{
     float: right;
