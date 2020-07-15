@@ -24,13 +24,8 @@ margin-bottom: 5%;
 
  }
 
-<<<<<<< Updated upstream:style.css
- .into-pic{
-     background-image: url("../intro-use.jpg");
-=======
  .intro-pic{
      background-image: url("../images/intro-use.jpg");
->>>>>>> Stashed changes:assets/style.css
      background-size: cover;
      height: 500px;
      width: 100%;
@@ -77,9 +72,9 @@ margin-bottom: 5%;
 
 
 .searchBar-pic{
-    align-self: center;
-    text-align: center;
+    display:grid;
     margin:0 auto;
+    margin-top: 9%;
     }
 .profilebtn{
     float: right;
@@ -217,4 +212,42 @@ border: black groove 1px;
 }
 .prince{
 	list-style-type: none;
+}
+
+
+/* Rating Images */
+.glass-00{
+    content: url('../images/glass-00.png');
+    background-size: cover;
+    height: 50px;
+    width: 50px;
+    border: rgba(0, 0, 0, 0.432) groove 1px;
+    align-self: center;
+}
+
+.glass-30{
+    content: url('../images/glass-30.png');
+    background-size: cover;
+    height: 50px;
+    width: 50px;
+    border: rgba(0, 0, 0, 0.432) groove 1px;
+    align-self: center;
+}
+
+.glass-60{
+    content: url('../images/glass-60.png');
+    background-size: cover;
+    height: 50px;
+    width: 50px;
+    border: rgba(0, 0, 0, 0.432) groove 1px;
+    align-self: center;
+}
+
+.glass-100{
+    content: url('../images/glass-100.png');
+    background-size: cover;
+    height: 50px;
+    width: 50px;
+    border: rgba(0, 0, 0, 0.432) groove 1px;
+    align-self: center;
 }
