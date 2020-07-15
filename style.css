@@ -24,8 +24,13 @@ margin-bottom: 5%;
 
  }
 
+<<<<<<< Updated upstream:style.css
  .into-pic{
      background-image: url("../intro-use.jpg");
+=======
+ .intro-pic{
+     background-image: url("../images/intro-use.jpg");
+>>>>>>> Stashed changes:assets/style.css
      background-size: cover;
      height: 500px;
      width: 100%;
@@ -78,6 +83,7 @@ margin-bottom: 5%;
     }
 .profilebtn{
     float: right;
+    margin-left: 64%;
 }
 
 .go{
@@ -159,7 +165,10 @@ margin-bottom: 5%;
 border: black groove 1px;
 }
 
-
+.exit{
+    border: 1px groove black;
+    float: right;
+}
 
  /* End Modal Login Content */
 
