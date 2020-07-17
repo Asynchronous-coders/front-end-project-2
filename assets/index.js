@@ -89,8 +89,22 @@ $(document).ready(function () {
         "x-rapidapi-key": "800dedb80dmsh5623edb79c19968p10818fjsnd60acfd537d3",
       }
     }).then(function (response) {
+      console.log(response);
       for (i = 0; i < 8; i++) {
-        $(".content-first").append(`<div><img class="drinksForDiv" src =${response.drinks[i].strDrinkThumb}><div class="drinksForDivTextContent"><h5 class = "heading">Name:<ul><li>${response.drinks[i].strDrink}</li></ul><h5 class = "heading">Ingredients<ul><li>${response.drinks[i].strIngredient1}</li><li>${response.drinks[i].strIngredient2}</li><li>${response.drinks[i].strIngredient3}</li></ul></div></div>`);
+        $(".content-first").append(`
+        <div>
+          <img class="drinksForDiv" src =${response.drinks[i].strDrinkThumb}>
+          <div class="drinksForDivTextContent">
+            <h5 class="heading">\"${response.drinks[i].strDrink}\"</h5>
+            <h5 class="heading"><u>Ingredients:</u></h5>
+              <ul>
+                <li>${response.drinks[i].strIngredient1}</li>
+                <li>${response.drinks[i].strIngredient2}</li>
+                <li>${response.drinks[i].strIngredient3}</li>
+              </ul>
+          </div>
+        </div>
+        `);
       }
     })
   };
@@ -201,7 +215,7 @@ $(document).ready(function () {
       console.log(res);
     });
   };
-  
+
   function getReviewsByCocktail(reviews_id) {
     $.ajax({
       async: true,
