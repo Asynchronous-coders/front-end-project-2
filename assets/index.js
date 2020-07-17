@@ -171,7 +171,7 @@ $(document).ready(function () {
       }
     });
   };
-  
+
   //not sure if we necessarily need getrating/ get review by id... 
   function getRatingbyId(reviews_id) {
     $.ajax({
@@ -181,10 +181,10 @@ $(document).ready(function () {
       method: "GET"
     }).then((res) => {
       console.log(res);
-      
+
     });
   };
-  
+
 
   function getReviewbyId(reviews_id) {
     $.ajax({
@@ -196,7 +196,7 @@ $(document).ready(function () {
       console.log(res);
     });
   };
-  
+
 
   function getReviewsByCocktail(cocktail_id) {
     $.ajax({
@@ -214,31 +214,29 @@ $(document).ready(function () {
       }
     });
   };
-  
+
 
 
   //the post and patch have not been tested out nor am I sure if I wrote it correctly. --Juan
   function postNewReview(review_obj) {
     $.post(// `https://backend-project-2.herokuapp.com/reviews`,
       `http://localhost:9000/reviews`, review_obj, (data) => {
-      console.log(data);
-    });
+        console.log(data);
+      });
   };
-  postNewReview({"rate_cocktail": 8,
-  "review_cocktail": "Sweet and delicious",
-  "user_id": 2,
-  "cocktail_id": 2});
 
-  function patchReviewById(reviews_id) {
+
+  function patchReviewById(reviews_id, updated_review) {
     $.ajax({
-      async: true,
+      method: "PATCH",
       // url: `https://backend-project-2.herokuapp.com/reviews/${reviews_id}`,
       url: `http://localhost:9000/reviews/${reviews_id}`,
-      method: "PATCH"
+      data: updated_review
     }).then((res) => {
       console.log(res);
     });
   };
+
 
 
 
