@@ -32,7 +32,7 @@ $(document).ready(function () {
         "x-rapidapi-key": "800dedb80dmsh5623edb79c19968p10818fjsnd60acfd537d3",
       }
     }).then(function (response) {
-      for (i = 0; i <= 100; i++) {
+      for (i = 0; i <= 30; i++) {
         $('.ingredientsOption').append(`<a class="dropdown-item" href="${response.drinks[i].strIngredient1}">${response.drinks[i].strIngredient1}</a>`)
   };
   })
@@ -304,6 +304,25 @@ function getAllReviews() {
 };
 getAllReviews();
 // End reviews for Div
+// on clicks
+$(document).on("click", ".login-modal", function () {
+  $("#myModal").modal('show');
+  return false
+});
+// end login button / modal function
+
+// sign up button start
+$(document).on("click", ".signUp", function () {
+  $("#signUpModal").modal('show');
+  $('#myModal').modal('hide')
+  return false
+});
+//end sign up button
+
+// Search Button
+$(document).on("click", ".go", function () {
+  console.log("searched")
+});
 
 
 }

@@ -2,7 +2,7 @@
 body{
     height: 100%;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    background: linear-gradient(110deg, rgba(209, 207, 207, 0) 60%, rgb(199, 199, 199) 60%);
+    background: linear-gradient(110deg, rgba(255, 255, 255, 0) 60%, rgb(58, 33, 172) 60%);
 };
 
 /* head of page */
@@ -53,7 +53,7 @@ margin-bottom: 5%;
     position: relative;
     border: black 1px solid;
     width: 100%;
-    background-color: gray;
+    background-color: rgb(91, 91, 107);
 }
 .ingredientsOption{
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -100,7 +100,7 @@ margin-bottom: 5%;
     border: groove black 1px;
     border-radius: 25px;
     height: 360px;
-    background-color: rgb(167, 167, 167);
+    background-color:  rgb(91, 91, 107);
 }
 .drinksForDiv{
     height: 80%;
@@ -137,7 +137,7 @@ margin-bottom: 5%;
     margin-top: 1%;
     float: left;
     border: black groove 1px;
-    background-color: rgb(167, 167, 167);
+    background-color:  rgb(91, 91, 107);
     }
     .rightsideTwo{
     overflow: auto;
@@ -147,7 +147,7 @@ margin-bottom: 5%;
     margin-top: 1%;
     float: right;
     border: black groove 1px;
-    background-color: rgb(167, 167, 167);
+    background-color:  rgb(91, 91, 107);
     }
     .review-card{
         border: black solid 1px;
@@ -221,7 +221,7 @@ border: black groove 1px;
     width: 100%;
     height:auto;
     border: groove 1px black;
-    background-color: rgb(167, 167, 167);
+    background-color:  rgb(91, 91, 107);
 }
 
 /* Section for unordered list attributes */ 

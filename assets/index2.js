@@ -1,7 +1,7 @@
 let cocktail = {};
 
 const searchByName = (data) => {
-    fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=Margarita`)
+    fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=Martini`)
     .then(
         function(response) {
         if (response.status !== 200) {
@@ -98,12 +98,13 @@ cocktailById();
 
 $("#searchBtn").on("click", function(event) {
     if (event.which === 13) {
-        drinkName = $('#searchBtn').val();
-
+        drinkName = $('.searchBtn').val();
     }
 });
 
 
-
-
+// $(document).on("click",".searchBtn", function(){
+//     $("#contentModal").modal('show');
+//     $("drinknameModal").append(data.name);
+// })
 
