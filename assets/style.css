@@ -99,7 +99,7 @@ margin-bottom: 5%;
 .content-first{
     border: groove black 1px;
     border-radius: 25px;
-    height: 400px;
+    height: 360px;
     background-color: rgb(167, 167, 167);
 }
 .drinksForDiv{
@@ -140,7 +140,7 @@ margin-bottom: 5%;
     background-color: rgb(167, 167, 167);
     }
     .rightsideTwo{
-        overflow: auto;
+    overflow: auto;
     height: 100%;
     border-radius: 25px;
     text-align: center;
