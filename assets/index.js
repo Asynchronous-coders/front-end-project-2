@@ -193,6 +193,12 @@ $(document).ready(function () {
           <div class="row glasses${info.id}"></div>
           <div class="row review-rate">${info.rate_cocktail}/10</div>
           <div class="row review-cocktail">${info.review_cocktail}</div>
+          <div class="row">
+            <div class="col-md-3"></div>
+            <button class="btn-primary edit-review${info.id}">Edit</button>
+            <div class="col-md-2"></div>
+            <button class="btn-danger delete-review${info.id}">Delete</button>
+          </div>
         </div>
       </div>
       `);
@@ -200,27 +206,6 @@ $(document).ready(function () {
 
   // corona_cocktail calls
 
-  // function getReviewbyId(reviews_id) {
-  //   $.ajax({
-  //     async: true,
-  //     url: `https://backend-project-2.herokuapp.com/review/${reviews_id}`,
-  //     method: "GET"
-  //   }).then((res) => {
-  //     console.log(res);
-  //   });
-  // };
-
-  // // not sure if we necessarily need getrating/ get review by id... 
-  // function getRatingbyId(reviews_id) {
-  //   $.ajax({
-  //     async: true,
-  //     // url: `https://backend-project-2.herokuapp.com/rating/${reviews_id}`,
-  //     url: `http://localhost:9000/rating/${reviews_id}`,
-  //     method: "GET"
-  //   }).then((res) => {
-  //     console.log(res);
-  //   });
-  // };
 
 
   // login button / modal function
