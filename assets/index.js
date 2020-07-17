@@ -1,6 +1,7 @@
 $(document).ready(function () {
+  let apiDrink = [];
   // List Filters EndPoint
-  listFilters();
+
   function listFilters() {
     $.ajax({
       "async": true,
@@ -18,10 +19,11 @@ $(document).ready(function () {
       }
     });
   };
+  listFilters();
   // End Filters Endpoint
 
   // List Ingredients
-  listIngredients();
+
   function listIngredients() {
     $.ajax({
       async: true,
@@ -37,10 +39,11 @@ $(document).ready(function () {
       };
     })
   };
+  listIngredients();
   // End Ingredient List
 
   // List Glasses List
-  listGlasses();
+
   function listGlasses() {
     $.ajax({
       async: true,
@@ -51,15 +54,16 @@ $(document).ready(function () {
         "x-rapidapi-key": "800dedb80dmsh5623edb79c19968p10818fjsnd60acfd537d3",
       }
     }).then(function (response) {
-      for (i = 0; i <= 32; i++) {
+      for (i = 0; i <= 31; i++) {
         $('.glassesOption').append(`<a class="dropdown-item" href="${response.drinks[i].strGlass}">${response.drinks[i].strGlass}</a>`)
       }
     });
   }
+  listGlasses();
   // End Glasses List
 
   // List Glasses List
-  listCategories();
+
   function listCategories() {
     $.ajax({
       async: true,
@@ -70,44 +74,46 @@ $(document).ready(function () {
         "x-rapidapi-key": "800dedb80dmsh5623edb79c19968p10818fjsnd60acfd537d3",
       }
     }).then(function (response) {
-      for (i = 0; i <= 32; i++) {
+      for (i = 0; i <= 3; i++) {
         $('.categoriesOption').append(`<a class="dropdown-item" href="${response.drinks[i].strCategory}">${response.drinks[i].strCategory}</a>`)
       }
-    })
+    });
   };
+  listCategories();
   // End Glasses List
   // Drinks for Div 
-  getDrinksForDiv();
-  getDrinksForDiv();
+
   function getDrinksForDiv() {
-    $.ajax({
-      async: true,
-      url: "https://the-cocktail-db.p.rapidapi.com/random.php",
-      method: "GET",
-      "headers": {
-        "x-rapidapi-host": "the-cocktail-db.p.rapidapi.com",
-        "x-rapidapi-key": "800dedb80dmsh5623edb79c19968p10818fjsnd60acfd537d3",
-      }
-    }).then(function (response) {
-      console.log(response);
-      for (i = 0; i < 8; i++) {
-        $(".content-first").append(`
+    $.get("https://www.thecocktaildb.com/api/json/v1/1/random.php", function (response) {
+      $(".content-first").append(`
         <div>
-          <img class="drinksForDiv" src =${response.drinks[i].strDrinkThumb}>
+          <img class="drinksForDiv" src =${response.drinks[0].strDrinkThumb}>
           <div class="drinksForDivTextContent">
-            <h5 class="heading">\"${response.drinks[i].strDrink}\"</h5>
+            <h5 class="heading">\"${response.drinks[0].strDrink}\"</h5>
             <h5 class="heading"><u>Ingredients:</u></h5>
               <ul>
-                <li>${response.drinks[i].strIngredient1}</li>
-                <li>${response.drinks[i].strIngredient2}</li>
-                <li>${response.drinks[i].strIngredient3}</li>
+                <li>${response.drinks[0].strIngredient1}</li>
+                <li>${response.drinks[0].strIngredient2}</li>
+                <li>${response.drinks[0].strIngredient3}</li>
               </ul>
           </div>
         </div>
+        <button class="save btn-danger">Save</button>
         `);
-      }
-    })
+        apiDrink.push({
+          "cocktail_name": response.drinks[0].strDrink,
+          "ingredients" : `${response.drinks[0].strIngredient1}, ${response.drinks[0].strIngredient2}, ${response.drinks[0].strIngredient3}`,
+         });
+         
+         $('.save').on('click', function(){
+          console.log(apiDrink);
+          // postNewReview(apiDrink);
+        });
+    });
   };
+ 
+  
+
   // End Drinks For Div 
 
   //corona_cocktail calls
@@ -194,58 +200,28 @@ $(document).ready(function () {
 
   // corona_cocktail calls
 
-  function getReviewbyId(reviews_id) {
-    $.ajax({
-      async: true,
-      url: `https://backend-project-2.herokuapp.com/review/${reviews_id}`,
-      method: "GET"
-    }).then((res) => {
-      console.log(res);
-    });
-  };
+  // function getReviewbyId(reviews_id) {
+  //   $.ajax({
+  //     async: true,
+  //     url: `https://backend-project-2.herokuapp.com/review/${reviews_id}`,
+  //     method: "GET"
+  //   }).then((res) => {
+  //     console.log(res);
+  //   });
+  // };
 
-  // not sure if we necessarily need getrating/ get review by id... 
-  function getRatingbyId(reviews_id) {
-    $.ajax({
-      async: true,
-      // url: `https://backend-project-2.herokuapp.com/rating/${reviews_id}`,
-      url: `http://localhost:9000/rating/${reviews_id}`,
-      method: "GET"
-    }).then((res) => {
-      console.log(res);
-    });
-  };
+  // // not sure if we necessarily need getrating/ get review by id... 
+  // function getRatingbyId(reviews_id) {
+  //   $.ajax({
+  //     async: true,
+  //     // url: `https://backend-project-2.herokuapp.com/rating/${reviews_id}`,
+  //     url: `http://localhost:9000/rating/${reviews_id}`,
+  //     method: "GET"
+  //   }).then((res) => {
+  //     console.log(res);
+  //   });
+  // };
 
-  function getReviewsByCocktail(reviews_id) {
-    $.ajax({
-      async: true,
-      url: `https://backend-project-2.herokuapp.com/reviews/cocktail/${reviews_id}`,
-      method: "GET"
-    }).then((res) => {
-      console.log(res);
-    });
-  };
-
-  //the post and patch have not been tested out nor am I sure if I wrote it correctly. --Juan
-  function postNewReview() {
-    $.ajax({
-      async: true,
-      url: `https://backend-project-2.herokuapp.com/reviews`,
-      method: "POST"
-    }).then((res) => {
-      console.log(res);
-    });
-  };
-
-  function patchReviewById(reviews_id) {
-    $.ajax({
-      async: true,
-      url: `https://backend-project-2.herokuapp.com/reviews/${reviews_id}`,
-      method: "PATCH"
-    }).then((res) => {
-      console.log(res);
-    });
-  };
 
   // login button / modal function
 
@@ -266,16 +242,13 @@ $(document).ready(function () {
     });
   };
 
-
-
-  // the post and patch have not been tested out nor am I sure if I wrote it correctly. --Juan
+  // functional
   function postNewReview(review_obj) {
     $.post(// `https://backend-project-2.herokuapp.com/reviews`,
       `http://localhost:9000/reviews`, review_obj, (data) => {
         console.log(data);
       });
   };
-
 
   function patchReviewById(reviews_id, updated_review) {
     $.ajax({
@@ -307,11 +280,10 @@ $(document).ready(function () {
     });
   };
   getAllReviews();
+  getDrinksForDiv();
   // End reviews for Div
 
 
-}
-  // 
 
 
   // // if this option is clicked and matches the obj.filters then open modal
@@ -320,4 +292,4 @@ $(document).ready(function () {
   //   return false
   // });
 
-);
+});
