@@ -7,7 +7,6 @@ const searchByName = (data) => {
         if (response.status !== 200) {
             console.log('Looks like there was a problem. Status Code: ' +
             response.status);
-            return data;
         }
         response.json().then(function(data) {
             //console.log(data);
@@ -30,7 +29,6 @@ const searchByIngredient = (data) => {
         if (response.status !== 200) {
             console.log('Looks like there was a problem. Status Code: ' +
             response.status);
-            return data;
         }
         response.json().then(function(data) {
             console.log(data);
@@ -49,7 +47,6 @@ const cocktailById = (data) => {
         if (response.status !== 200) {
             console.log('Looks like there was a problem. Status Code: ' +
             response.status);
-            return data;
         }
         response.json().then(function(data) {
             //console.log(data);
@@ -99,12 +96,12 @@ cocktailById();
 
 
 
-// $("#search").keypress(function(event) {
-//     if (event.which === 13) {
-//         drinkName = $('#search').val();
+$("#searchBtn").on("click", function(event) {
+    if (event.which === 13) {
+        drinkName = $('#searchBtn').val();
 
-//     }
-// });
+    }
+});
 
 
 
