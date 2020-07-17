@@ -79,7 +79,7 @@ $(document).ready(function () {
   };
   // End Glasses List
 
-  function appendImgGlassRate(rate,id) {
+  function appendImgGlassRate(rate, id) {
     if (rate < 0 || null) {
       $(`.glasses${id}`).append(`
         <div class="col-md glass-00"></div>
@@ -129,7 +129,7 @@ $(document).ready(function () {
         <div class="col-md glass-100"></div>
         <div class="col-md glass-60"></div>
         `);
-    }else if (rate >= 10) {
+    } else if (rate >= 10) {
       $(`.glasses${id}`).append(`
         <div class="col-md glass-100"></div>
         <div class="col-md glass-100"></div>
@@ -138,8 +138,21 @@ $(document).ready(function () {
         <div class="col-md glass-100"></div>
         `);
     }
-    
+
   };
+
+  function appendReviewDetails(info) {
+    $('.content-first').append(`
+      <div class="review-card border-rounded">
+        <div id="${info.id}" class="col-md">
+          <div class="row">${info.rate_cocktail}/10</div>
+          <div class="row col-md-5 glasses${info.id}"></div>
+          <div class="row">${info.review_cocktail}</div>
+          <div class="row"> By User ${info.user_id}</div>
+        </div>
+      </div>
+      `);
+  }
 
   //corona_cocktail calls
   function getAllReviews() {
@@ -152,22 +165,13 @@ $(document).ready(function () {
       const reviews = res;
       for (const review in reviews) {
         const info = reviews[review];
-        $('.content-first').append(`
-          <div class="review-card border-rounded">
-            <div id="${info.id}" class="col-md">
-              <div class="row">${info.rate_cocktail}/10</div>
-              <div class="row col-md-5 glasses${info.id}"></div>
-              <div class="row">${info.review_cocktail}</div>
-              <div class="row"> By ${info.user_id}</div>
-            </div>
-          </div>
-          `);
+        appendReviewDetails(info);
         const rate = info.rate_cocktail;
-        appendImgGlassRate(rate,info.id);
+        appendImgGlassRate(rate, info.id);
       }
     });
   };
-  getAllReviews();
+  
 
 
   function getRatingbyId(reviews_id) {
@@ -178,8 +182,10 @@ $(document).ready(function () {
       method: "GET"
     }).then((res) => {
       console.log(res);
+      
     });
   };
+  
 
   function getReviewbyId(reviews_id) {
     $.ajax({
@@ -191,6 +197,8 @@ $(document).ready(function () {
       console.log(res);
     });
   };
+  getReviewbyId(1);
+  getRatingbyId(2);
 
   function getReviewsByCocktail(reviews_id) {
     $.ajax({
@@ -199,9 +207,16 @@ $(document).ready(function () {
       url: `http://localhost:9000/reviews/cocktail/${reviews_id}`,
       method: "GET"
     }).then((res) => {
-      console.log(res);
+      const reviews = res;
+      for (const review in reviews) {
+        const info = reviews[review];
+        appendReviewDetails(info);
+        const rate = info.rate_cocktail;
+        appendImgGlassRate(rate, info.id);
+      }
     });
   };
+  
 
 
   //the post and patch have not been tested out nor am I sure if I wrote it correctly. --Juan
