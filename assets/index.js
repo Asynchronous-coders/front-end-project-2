@@ -1,5 +1,3 @@
-
-
 $(document).ready(function () {
   // List Filters EndPoint
   listFilters();
@@ -157,7 +155,7 @@ $(document).ready(function () {
         <div class="col-md glass-100"></div>
         `);
     }
-
+  }
 
   function appendReviewDetails(info) {
     $('.content-first').append(`
@@ -168,8 +166,7 @@ $(document).ready(function () {
           <div class="row">${info.review_cocktail}</div>
           <div class="row"> By User ${info.user_id}</div>
         </div>
-      </div>
-      `);
+      </div>`);
   }
 
   //corona_cocktail calls
@@ -189,15 +186,15 @@ $(document).ready(function () {
       }
     });
   };
-    // function getReviewbyId(reviews_id) {
-    //   $.ajax({
-    //     async: true,
-    //     url: `https://backend-project-2.herokuapp.com/review/${reviews_id}`,
-    //     method:"GET"
-    //   }).then((res) =>{
-    //     console.log(res);
-    //   });
-    // };
+    function getReviewbyId(reviews_id) {
+      $.ajax({
+        async: true,
+        url: `https://backend-project-2.herokuapp.com/review/${reviews_id}`,
+        method:"GET"
+      }).then((res) =>{
+        console.log(res);
+      });
+    };
 
   //not sure if we necessarily need getrating/ get review by id... 
   function getRatingbyId(reviews_id) {
@@ -208,6 +205,7 @@ $(document).ready(function () {
       method: "GET"
     }).then((res) => {
       console.log(res);
+    })
     // function getReviewsByCocktail(reviews_id) {
     //   $.ajax({
     //     async: true,
@@ -280,7 +278,8 @@ $(document).ready(function () {
     });
   };
 
-    // Reviews for Div
+
+      // Reviews for Div
 function getAllReviews() {
   $.ajax({
     async: true,
@@ -298,14 +297,15 @@ function getAllReviews() {
           <div class="row review-rate">${info.rate_cocktail}/10</div>
           <div class="row review-cocktail">${info.review_cocktail}</div>
         </div>
-      </div> <br>`);
+      </div> `);
     }
   });
 };
 getAllReviews();
 // End reviews for Div
+
+
 }
-)
 // 
 
 
@@ -315,5 +315,4 @@ getAllReviews();
 //   return false
 // });
 
-
-
+});
