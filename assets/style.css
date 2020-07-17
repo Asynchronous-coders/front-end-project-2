@@ -69,13 +69,20 @@ margin-bottom: 5%;
 .filterOption{
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
-
+.dropdown-item{
+    border-bottom: solid black 1px;
+}
 
 .searchBar-pic{
-    display:grid;
     margin:0 auto;
-    margin-top: 9%;
+    display: block;
+    margin-top: 13%;
     }
+.searchBtn{
+    border: solid black 1px;
+    background-color: white;
+}
+    
 .profilebtn{
     float: right;
     margin-left: 64%;
@@ -95,9 +102,19 @@ margin-bottom: 5%;
     height: 400px;
     background-color: rgb(167, 167, 167);
 }
+.drinksForDiv{
+    height: 80%;
+    width: 30%;
+    padding-left: 8%;
+    float: left;
+}
 .content-first-text{
     text-align: center;
     font-size: large;
+}
+.drinksForDivTextContent{
+    padding-left: 1%;
+  float: left;
 }
     /* second set of containers */
     .body-second{
@@ -108,7 +125,8 @@ margin-bottom: 5%;
     }
     .line{
     border: black 1px solid;
-    margin-top: 9%;
+    margin-top: 2%;
+    margin-bottom: 2%;
     margin-left: 20%;
     margin-right: 20%;
     }
@@ -122,6 +140,7 @@ margin-bottom: 5%;
     background-color: rgb(167, 167, 167);
     }
     .rightsideTwo{
+        overflow: auto;
     height: 100%;
     border-radius: 25px;
     text-align: center;
@@ -130,6 +149,24 @@ margin-bottom: 5%;
     border: black groove 1px;
     background-color: rgb(167, 167, 167);
     }
+    .review-card{
+        border: black solid 1px;
+        margin-top: 1%;
+        background-color: white;
+        border-radius: 25px;
+    }
+    .review-user{
+        padding-left: 45%;
+        margin: 0 auto;
+        border-bottom: black solid 1px;
+    }
+    .review-rate{
+        padding-left: 3%;
+    }
+    .review-cocktail{
+    padding-left:3% ;
+    }
+
     .leftsideTextTwo{
     text-align: center;
     font-size: large;
