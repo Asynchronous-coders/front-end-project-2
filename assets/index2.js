@@ -14,7 +14,7 @@ const searchByName = (drinkName) => {
               </ul>
             </div>
             <div class="drinksForDivTextContent">
-            <h5 class='heading'><u>Directions:</u></h5>
+            <h5 class='heading'><br><u>Directions:</u></h5>
             ${data.drinks[0].strInstructions}
           </div>
         </div> 

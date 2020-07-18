@@ -1,11 +1,8 @@
 /* universal selector for body */
-html{
-    overflow-x: hidden;
-}
 body{
     height: 100%;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    background: linear-gradient(110deg, rgba(255, 255, 255, 0) 60%, rgb(58, 33, 172) 60%);
+    font-family:Georgia, 'Times New Roman', Times, serif ;
+    background: linear-gradient(110deg, rgba(255, 255, 255, 0) 30%, rgb(255, 219, 119) 60%);
     overflow-x: hidden;
 };
 
@@ -18,6 +15,7 @@ header{
 }
 .title{
 margin-bottom: 5%;
+margin-top: 3%;
 }
 
 .intro{
@@ -59,7 +57,7 @@ margin-bottom: 5%;
     position: relative;
     border: black 1px solid;
     width: 100%;
-    background-color: rgb(91, 91, 107);
+    background-color: white;
 }
 .ingredientsOption{
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -105,7 +103,8 @@ margin-bottom: 5%;
 .content-first{
     border: groove black 1px;
     height: 360px;
-    background-color:  rgb(91, 91, 107);
+    background-color: white;
+    width: 100%;
 }
 .drinksForDiv{
     height: 80%;
@@ -122,6 +121,9 @@ margin-bottom: 5%;
 .content-first-text{
     text-align: center;
     font-size: large;
+}
+.pinnedDrinks{
+    margin-top: 3%;
 }
 .drinksForDivTextContent{
     padding-left: 1%;
@@ -148,7 +150,7 @@ margin-bottom: 5%;
     text-align: center;
     margin-top: 1%;
     border: black groove 1px;
-    background-color:  rgb(91, 91, 107);
+    background-color: white;
     }
     .rightsideTwo{
     float: left;
@@ -158,7 +160,7 @@ margin-bottom: 5%;
     width: 100%;
     text-align: center;
     border: black groove 1px;
-    background-color:  rgb(91, 91, 107);
+    background-color: white;
     }
     .body-third{
         width: 100%;
@@ -168,7 +170,7 @@ margin-bottom: 5%;
         height: 500px;
         overflow: auto;
         text-align: center;
-        background-color:  rgb(91, 91, 107);
+        background-color: white;
         border: groove black 1px;
         margin-bottom: 2%;
     }
@@ -193,14 +195,19 @@ margin-bottom: 5%;
     .leftsideTextTwo{
     text-align: center;
     font-size: large;
-    padding-top: 5%;
+    padding-top: 3%;
+    padding-bottom: 1%;
     }
     .rightsideTextTwo{
     text-align: center;
     font-size: large;
     padding-top: 5%;
     }
-
+    .saved{
+    border: solid black 1px;
+    text-align: left;
+    margin-left: 1%;
+    }
 
     /* End body attributes
 
@@ -242,7 +249,7 @@ border: black groove 1px;
     width: 100%;
     height:auto;
     border: groove 1px black;
-    background-color:  rgb(91, 91, 107);
+    background-color: white;
 }
 
 /* Section for unordered list attributes */ 

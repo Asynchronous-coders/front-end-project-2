@@ -98,6 +98,7 @@ $(document).ready(function () {
               </ul>
           </div>
         </div>
+<<<<<<< Updated upstream
         <button class="save btn-danger">Save</button>
         `);
       apiDrink.push({
@@ -109,6 +110,17 @@ $(document).ready(function () {
         console.log(apiDrink[0]);
         saveCocktail(apiDrink)
       });
+=======
+        <button class="save btn-danger">Save</button>`);
+        apiDrink.push({
+          "cocktail_name": response.drinks[0].strDrink,
+          "ingredients" : `${response.drinks[0].strIngredient1}, ${response.drinks[0].strIngredient2}, ${response.drinks[0].strIngredient3}`,
+         });
+         
+         $('.save').on('click', function(){
+          $(".rightsideTwo").append(`<div class = "saved"><p>${response.drinks[0].strDrink}</p><button class="save btn-danger">Save</button></div>`)
+        });
+>>>>>>> Stashed changes
     });
   };
 
