@@ -106,8 +106,8 @@ $(document).ready(function () {
       });
 
       $('.save').on('click', function () {
-        console.log(apiDrink);
-        // postNewReview(apiDrink);
+        console.log(apiDrink[0]);
+        saveCocktail(apiDrink)
       });
     });
   };
@@ -209,7 +209,13 @@ $(document).ready(function () {
   }
 
   // corona_cocktail calls
-
+function saveCocktail(apiDrink) {
+  $.post(
+    // "http://localhost:9000/cocktail",
+    "https://backend-project-2.herokuapp.com/cocktail",
+    apiDrink[0],
+  );
+}
 
 
   // login button / modal function
@@ -217,8 +223,8 @@ $(document).ready(function () {
   function getReviewsByCocktail(cocktail_id) {
     $.ajax({
       async: true,
-      // url: `https://backend-project-2.herokuapp.com/reviews/cocktail/${cocktail_id}`,
-      url: `http://localhost:9000/reviews/cocktail/${cocktail_id}`,
+      url: `https://backend-project-2.herokuapp.com/reviews/cocktail/${cocktail_id}`,
+      // url: `http://localhost:9000/reviews/cocktail/${cocktail_id}`,
       method: "GET"
     }).then((res) => {
       const reviews = res;
@@ -234,8 +240,8 @@ $(document).ready(function () {
   function deleteReviewById(review_id) {
     $.ajax({
       method: "DELETE",
-      // url: `https://backend-project-2.herokuapp.com/reviews/${review_id}`,
-      url:`http://localhost:9000/review/${review_id}`,
+      url: `https://backend-project-2.herokuapp.com/reviews/${review_id}`,
+      // url:`http://localhost:9000/review/${review_id}`,
       success: function() {
         window.location.reload();
       }
@@ -266,8 +272,8 @@ $(document).ready(function () {
   function getAllReviews() {
     $.ajax({
       async: true,
-      // url: `https://backend-project-2.herokuapp.com/reviews`,
-      url: `http://localhost:9000/reviews`,
+      url: `https://backend-project-2.herokuapp.com/reviews`,
+      // url: `http://localhost:9000/reviews`,
       method: "GET"
     }).then((res) => {
       const reviews = res;
@@ -283,34 +289,7 @@ $(document).ready(function () {
   };
   getAllReviews();
   getDrinksForDiv();
-  // End reviews for Div
 
-
-
-  // Reviews for Div
-  // function getAllReviews() {
-  //   $.ajax({
-  //     async: true,
-  //     // url: `https://backend-project-2.herokuapp.com/reviews`,
-  //     url: `http://localhost:9000/reviews`,
-  //     method:"GET"
-  //   }).then((res) =>{
-  //     const reviews = res;
-  //     for (const review in reviews) {
-  //       const info = reviews[review];
-  //       $('.reviewDiv').append(
-  //         `<div class="review-card border-rounded">
-  //         <div id="${info.id}" class="col-md">
-  //           <div class="row review-user"> User: ${info.user_id}</div> 
-  //           <div class="row review-rate">${info.rate_cocktail}/10</div>
-  //           <div class="row review-cocktail">${info.review_cocktail}</div>
-  //         </div>
-  //       </div> `);
-  //     }
-  //   });
-  // };
-  // getAllReviews();
-  // End reviews for Div
   // on clicks
   $(document).on("click", ".login-modal", function () {
     $("#myModal").modal('show');
