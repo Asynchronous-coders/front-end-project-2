@@ -1,42 +1,37 @@
-let cocktail = {};
-
-const searchByName = (data) => {
-    fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=Margarita`)
-    .then(
-        function(response) {
-        if (response.status !== 200) {
-            console.log('Looks like there was a problem. Status Code: ' +
-            response.status);
-        }
-        response.json().then(function(data) {
-            //console.log(data);
-            getDrinkName(data);
-            getIngredients(data);
-            getDirections(data);
-            getImage(data);
-        });
-        }
-    )
-    .catch(function(err) {
-        console.log('Fetch Error :-S', err);
+const searchByName = (drinkName) => {
+    $.get(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${drinkName}`, function (data) {
+        $(".leftsideTwo").append(`
+        <div class="leftsideTextTwo">
+            <h3>${data.drinks[0].strDrink}</h3>
+            <div class="line"></div>
+            <img class='drinksForLeftDiv' src =${data.drinks[0].strDrinkThumb}><br>
+            <div class="drinksForDivTextContent">            
+            <h5 class='heading'><u>Ingredients:</u></h5>
+              <ul>
+                <li>${data.drinks[0].strIngredient1}</li>
+                <li>${data.drinks[0].strIngredient2}</li>
+                <li>${data.drinks[0].strIngredient3}</li>
+              </ul>
+            </div>
+            <div class="drinksForDivTextContent">
+            <h5 class='heading'><u>Directions:</u></h5>
+            ${data.drinks[0].strInstructions}
+          </div>
+        </div> 
+        `);
     });
 }
 
-const searchByIngredient = (data) => {
-    fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=Gin`)
-    .then(
-        function(response) {
-        if (response.status !== 200) {
-            console.log('Looks like there was a problem. Status Code: ' +
-            response.status);
+const searchByIngredient = (item) => {
+    $.get(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${item}`, function (data) {
+        console.log(data);
+        for (let i = 1; i < data.drinks.length; i++) {
+            cocktail.image = (data.drinks[i].strDrinkThumb);
+            cocktail.name =  (data.drinks[i].strDrink); 
+            cocktail.ingredients = getIngredients(data);
+            cocktail.directions = (data.drinks[i].strInstructions);
+            console.log(cocktail)
         }
-        response.json().then(function(data) {
-            console.log(data);
-        });
-        }
-    )
-    .catch(function(err) {
-        console.log('Fetch Error :-S', err);
     });
 }
 
@@ -49,11 +44,8 @@ const cocktailById = (data) => {
             response.status);
         }
         response.json().then(function(data) {
-            //console.log(data);
-            getDrinkName(data);
-            getIngredients(data);
-            getDirections(data);
-            getImage(data);
+            //buildCocktail(data);
+            console.log(cocktail);
         });
         }
     )
@@ -62,14 +54,6 @@ const cocktailById = (data) => {
     });
 }
 
-
-const getImage = (data) => {
-    cocktail.imageURL = data.drinks[0].strDrinkThumb;
-}
-
-const getDrinkName = (data) => {
-    cocktail.name = (data.drinks[0].strDrink);  
-}
 
 const getIngredients = (data) => {
     let ingredientList = [];
@@ -81,29 +65,18 @@ const getIngredients = (data) => {
             ingredientList.push(ingredients);
         }
     }
-    cocktail.ingredients = ingredientList;
+    return ingredientList;
 }
 
-const getDirections = (data) => {
-    const directions = (data.drinks[0].strInstructions);
-    cocktail.directions = directions
-    console.log(cocktail); 
-}
-
-searchByName();
-searchByIngredient();
+//searchByIngredient();
 cocktailById();
 
-
-
-$("#searchBtn").on("click", function(event) {
-    if (event.which === 13) {
-        drinkName = $('#searchBtn').val();
-
-    }
+$(document).on('click', '#search', function () {
+    $(".leftsideTwo").empty();
+    drinkName = $('#userInput').val();
+    console.log(drinkName);
+    searchByName(drinkName);
+    // searchByIngredient(drinkName);
+    // $(".content-first").append(cocktail);
+    
 });
-
-
-
-
-
