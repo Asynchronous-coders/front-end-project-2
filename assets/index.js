@@ -34,7 +34,7 @@ $(document).ready(function () {
         "x-rapidapi-key": "800dedb80dmsh5623edb79c19968p10818fjsnd60acfd537d3",
       }
     }).then(function (response) {
-      for (i = 0; i <= 100; i++) {
+      for (i = 0; i <= 30; i++) {
         $('.ingredientsOption').append(`<a class="dropdown-item" href="${response.drinks[i].strIngredient1}">${response.drinks[i].strIngredient1}</a>`)
       };
     })
@@ -270,11 +270,49 @@ $(document).ready(function () {
 
 
 
+      // Reviews for Div
+function getAllReviews() {
+  $.ajax({
+    async: true,
+    // url: `https://backend-project-2.herokuapp.com/reviews`,
+    url: `http://localhost:9000/reviews`,
+    method:"GET"
+  }).then((res) =>{
+    const reviews = res;
+    for (const review in reviews) {
+      const info = reviews[review];
+      $('.reviewDiv').append(
+        `<div class="review-card border-rounded">
+        <div id="${info.id}" class="col-md">
+          <div class="row review-user"> User: ${info.user_id}</div> 
+          <div class="row review-rate">${info.rate_cocktail}/10</div>
+          <div class="row review-cocktail">${info.review_cocktail}</div>
+        </div>
+      </div> `);
+    }
+  });
+};
+getAllReviews();
+// End reviews for Div
+// on clicks
+$(document).on("click", ".login-modal", function () {
+  $("#myModal").modal('show');
+  return false
+});
+// end login button / modal function
 
-  // // if this option is clicked and matches the obj.filters then open modal
-  // $('.filterOption').on("click", function(){
-  //   $("#myModal").modal('show');
-  //   return false
-  // });
+// sign up button start
+$(document).on("click", ".signUp", function () {
+  $("#signUpModal").modal('show');
+  $('#myModal').modal('hide')
+  return false
+});
+//end sign up button
+
+// Search Button
+$(document).on("click", ".go", function () {
+  console.log("searched")
+});
+
 
 });
