@@ -4,13 +4,13 @@ const searchByName = (drinkName) => {
         <div class="leftsideTextTwo">
             <h3>${data.drinks[0].strDrink}</h3>
             <div class="line"></div>
-            <img class='drinksForLeftDiv' src =${data.drinks[0].strDrinkThumb}><br>
+            <img class='drinksForLeftDiv' src =${data.drinks[0].strDrinkThumb}>
             <div class="drinksForDivTextContent">            
             <h5 class='heading'><u>Ingredients:</u></h5>
-              <ul>
-                <li>${data.drinks[0].strIngredient1}</li>
-                <li>${data.drinks[0].strIngredient2}</li>
-                <li>${data.drinks[0].strIngredient3}</li>
+              <ul class="ings">
+              <li>${data.drinks[0].strIngredient1}</li>
+              <li>${data.drinks[0].strIngredient2}</li>
+              <li>${data.drinks[0].strIngredient3}</li>
               </ul>
             </div>
             <div class="drinksForDivTextContent">
@@ -19,6 +19,7 @@ const searchByName = (drinkName) => {
           </div>
         </div> 
         `);
+        
     });
 }
 
@@ -31,6 +32,7 @@ const searchByIngredient = (item) => {
             cocktail.ingredients = getIngredients(data);
             cocktail.directions = (data.drinks[i].strInstructions);
             console.log(cocktail)
+            
         }
     });
 }
@@ -44,8 +46,7 @@ const cocktailById = (data) => {
             response.status);
         }
         response.json().then(function(data) {
-            //buildCocktail(data);
-            console.log(cocktail);
+            console.log(data);
         });
         }
     )
@@ -54,29 +55,11 @@ const cocktailById = (data) => {
     });
 }
 
-
-const getIngredients = (data) => {
-    let ingredientList = [];
-    for (let i = 1; i < 16; i++) {
-        if (data.drinks[0][`strIngredient${i}`] == null){
-            break;
-        } else {
-            const ingredients = ((data.drinks[0][`strMeasure${i}`]) + ': ' + data.drinks[0][`strIngredient${i}`]);
-            ingredientList.push(ingredients);
-        }
-    }
-    return ingredientList;
-}
-
 //searchByIngredient();
-cocktailById();
+//cocktailById();
 
 $(document).on('click', '#search', function () {
     $(".leftsideTwo").empty();
     drinkName = $('#userInput').val();
-    console.log(drinkName);
     searchByName(drinkName);
-    // searchByIngredient(drinkName);
-    // $(".content-first").append(cocktail);
-    
 });
