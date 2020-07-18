@@ -113,6 +113,12 @@ margin-bottom: 5%;
     padding-left: 8%;
     float: left;
 }
+.drinksForLeftDiv{
+    height: 100%;
+    width: 50%;
+    padding-left: 8%;
+    float: left;
+}
 .content-first-text{
     text-align: center;
     font-size: large;
