@@ -100,19 +100,19 @@ $(document).ready(function () {
         </div>
         <button class="save btn-danger">Save</button>
         `);
-        apiDrink.push({
-          "cocktail_name": response.drinks[0].strDrink,
-          "ingredients" : `${response.drinks[0].strIngredient1}, ${response.drinks[0].strIngredient2}, ${response.drinks[0].strIngredient3}`,
-         });
-         
-         $('.save').on('click', function(){
-          console.log(apiDrink);
-          // postNewReview(apiDrink);
-        });
+      apiDrink.push({
+        "cocktail_name": response.drinks[0].strDrink,
+        "ingredients": `${response.drinks[0].strIngredient1}, ${response.drinks[0].strIngredient2}, ${response.drinks[0].strIngredient3}`,
+      });
+
+      $('.save').on('click', function () {
+        console.log(apiDrink);
+        // postNewReview(apiDrink);
+      });
     });
   };
- 
-  
+
+
 
   // End Drinks For Div 
 
@@ -186,22 +186,26 @@ $(document).ready(function () {
   }
 
   function appendReviewDetails(info) {
-    $('.rightsideTextTwo').append(`
+    $('.reviewDiv').append(`
       <div class="review-card border-rounded">
-        <div id="${info.id}" class="col-md">
-          <div class="row review-user"> User: ${info.user_id}</div> 
-          <div class="row glasses${info.id}"></div>
-          <div class="row review-rate">${info.rate_cocktail}/10</div>
-          <div class="row review-cocktail">${info.review_cocktail}</div>
-          <div class="row">
-            <div class="col-md-3"></div>
-            <button class="btn-primary edit-review${info.id}">Edit</button>
-            <div class="col-md-2"></div>
-            <button class="btn-danger delete-review${info.id}">Delete</button>
+        <div class="row">
+          <div class="col-md-2"></div>
+          <div value="${info.id}" class="col-md-8 review-id">
+            <div class="row review-user"> User: ${info.user_id}</div> 
+            <div class="row glasses${info.id}"></div>
+            <div class="row review-rate">${info.rate_cocktail}/10</div>
+            <div class="row review-cocktail">${info.review_cocktail}</div>
+            <div class="row" value="${info.id}" id="${info.id}">
+              <div class="col-md-3"></div>
+              <button class="btn-primary edit-review${info.id}">Edit</button>
+              <div class="col-md-2"></div>
+              <button class="btn-danger delete-review" value="${info.id}" id="${info.id}">Delete</button>
+            </div>
           </div>
-        </div>
+        </div> 
       </div>
       `);
+    
   }
 
   // corona_cocktail calls
@@ -226,6 +230,17 @@ $(document).ready(function () {
       }
     });
   };
+  
+  function deleteReviewById(review_id) {
+    $.ajax({
+      method: "DELETE",
+      // url: `https://backend-project-2.herokuapp.com/reviews/${review_id}`,
+      url:`http://localhost:9000/review/${review_id}`,
+      success: function() {
+        window.location.reload();
+      }
+    });
+  }
 
   // functional
   function postNewReview(review_obj) {
@@ -261,7 +276,9 @@ $(document).ready(function () {
         appendReviewDetails(info);
         const rate = info.rate_cocktail;
         appendImgGlassRate(rate, info.id);
+
       }
+      
     });
   };
   getAllReviews();
@@ -270,49 +287,54 @@ $(document).ready(function () {
 
 
 
-      // Reviews for Div
-function getAllReviews() {
-  $.ajax({
-    async: true,
-    // url: `https://backend-project-2.herokuapp.com/reviews`,
-    url: `http://localhost:9000/reviews`,
-    method:"GET"
-  }).then((res) =>{
-    const reviews = res;
-    for (const review in reviews) {
-      const info = reviews[review];
-      $('.reviewDiv').append(
-        `<div class="review-card border-rounded">
-        <div id="${info.id}" class="col-md">
-          <div class="row review-user"> User: ${info.user_id}</div> 
-          <div class="row review-rate">${info.rate_cocktail}/10</div>
-          <div class="row review-cocktail">${info.review_cocktail}</div>
-        </div>
-      </div> `);
-    }
+  // Reviews for Div
+  // function getAllReviews() {
+  //   $.ajax({
+  //     async: true,
+  //     // url: `https://backend-project-2.herokuapp.com/reviews`,
+  //     url: `http://localhost:9000/reviews`,
+  //     method:"GET"
+  //   }).then((res) =>{
+  //     const reviews = res;
+  //     for (const review in reviews) {
+  //       const info = reviews[review];
+  //       $('.reviewDiv').append(
+  //         `<div class="review-card border-rounded">
+  //         <div id="${info.id}" class="col-md">
+  //           <div class="row review-user"> User: ${info.user_id}</div> 
+  //           <div class="row review-rate">${info.rate_cocktail}/10</div>
+  //           <div class="row review-cocktail">${info.review_cocktail}</div>
+  //         </div>
+  //       </div> `);
+  //     }
+  //   });
+  // };
+  // getAllReviews();
+  // End reviews for Div
+  // on clicks
+  $(document).on("click", ".login-modal", function () {
+    $("#myModal").modal('show');
+    return false
   });
-};
-getAllReviews();
-// End reviews for Div
-// on clicks
-$(document).on("click", ".login-modal", function () {
-  $("#myModal").modal('show');
-  return false
-});
-// end login button / modal function
+  // end login button / modal function
 
-// sign up button start
-$(document).on("click", ".signUp", function () {
-  $("#signUpModal").modal('show');
-  $('#myModal').modal('hide')
-  return false
-});
-//end sign up button
+  // sign up button start
+  $(document).on("click", ".signUp", function () {
+    $("#signUpModal").modal('show');
+    $('#myModal').modal('hide')
+    return false
+  });
+  //end sign up button
 
-// Search Button
-$(document).on("click", ".go", function () {
-  console.log("searched")
-});
+  // Search Button
+  $(document).on("click", ".go", function () {
+    console.log("searched")
+  });
 
-
+  $(document).on("click", ".delete-review", (btn) => {
+    const reviewId = $(btn.target).attr("value");
+    deleteReviewById(reviewId);
+  });  
+ 
+ 
 });
