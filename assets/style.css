@@ -1,8 +1,12 @@
 /* universal selector for body */
+html{
+    overflow-x: hidden;
+}
 body{
     height: 100%;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     background: linear-gradient(110deg, rgba(255, 255, 255, 0) 60%, rgb(58, 33, 172) 60%);
+    overflow-x: hidden;
 };
 
 /* head of page */
@@ -20,10 +24,12 @@ margin-bottom: 5%;
     text-align: center;
     width: 100%;
     height: 300px;
-    border-radius: 25px;
 
  }
-
+.contain{
+    width: 100%;
+    float: center;
+}
  .intro-pic{
      background-image: url("../images/intro-use.jpg");
      background-size: cover;
@@ -98,7 +104,6 @@ margin-bottom: 5%;
  /* some body attributes */
 .content-first{
     border: groove black 1px;
-    border-radius: 25px;
     height: 360px;
     background-color:  rgb(91, 91, 107);
 }
@@ -114,14 +119,13 @@ margin-bottom: 5%;
 }
 .drinksForDivTextContent{
     padding-left: 1%;
-  float: left;
+    float: left;
 }
     /* second set of containers */
     .body-second{
     height: 500px;
-    margin-bottom: 5%;
+    margin-bottom: 2%;
     width: 100%;
-
     }
     .line{
     border: black 1px solid;
@@ -131,29 +135,42 @@ margin-bottom: 5%;
     margin-right: 20%;
     }
     .leftsideTwo{
+    float: left;
+    position: relative;
     height: 100%;
-    border-radius: 25px;
+    width: 100%;
     text-align: center;
     margin-top: 1%;
-    float: left;
     border: black groove 1px;
     background-color:  rgb(91, 91, 107);
     }
     .rightsideTwo{
+    float: left;
+    margin-top: 1%;
     overflow: auto;
     height: 100%;
-    border-radius: 25px;
+    width: 100%;
     text-align: center;
-    margin-top: 1%;
-    float: right;
     border: black groove 1px;
     background-color:  rgb(91, 91, 107);
+    }
+    .body-third{
+        width: 100%;
+        float: left;
+    }
+    .reviewDiv{
+        height: 500px;
+        overflow: auto;
+        text-align: center;
+        background-color:  rgb(91, 91, 107);
+        border: groove black 1px;
+        margin-bottom: 2%;
     }
     .review-card{
         border: black solid 1px;
         margin-top: 1%;
         background-color: white;
-        border-radius: 25px;
+        margin-left: 1%;
     }
     .review-user{
         padding-left: 45%;
@@ -177,7 +194,6 @@ margin-bottom: 5%;
     font-size: large;
     padding-top: 5%;
     }
-
 
 
     /* End body attributes
@@ -216,7 +232,6 @@ border: black groove 1px;
 
 /* footer attributes */
 .footer{
-    border-radius: 25px;
     margin-left: .5%;
     width: 100%;
     height:auto;

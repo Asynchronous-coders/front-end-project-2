@@ -281,7 +281,7 @@ function getAllReviews() {
     const reviews = res;
     for (const review in reviews) {
       const info = reviews[review];
-      $('.rightsideTwo').append(
+      $('.reviewDiv').append(
         `<div class="review-card border-rounded">
         <div id="${info.id}" class="col-md">
           <div class="row review-user"> User: ${info.user_id}</div> 
@@ -315,5 +315,4 @@ $(document).on("click", ".go", function () {
 });
 
 
-}
-// 
+});
