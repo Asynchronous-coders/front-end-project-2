@@ -84,31 +84,35 @@ $(document).ready(function () {
   // Drinks for Div 
 
   function getDrinksForDiv() {
-    $.get("https://www.thecocktaildb.com/api/json/v1/1/random.php", function (response) {
-      $(".content-first").append(`
-        <div>
-          <img class="drinksForDiv" src =${response.drinks[0].strDrinkThumb}>
-          <div class="drinksForDivTextContent">
-            <h5 class="heading">\"${response.drinks[0].strDrink}\"</h5>
-            <h5 class="heading"><u>Ingredients:</u></h5>
-              <ul>
-                <li>${response.drinks[0].strIngredient1}</li>
-                <li>${response.drinks[0].strIngredient2}</li>
-                <li>${response.drinks[0].strIngredient3}</li>
-              </ul>
+    for(i= 0 ; i <=2 ; i++){
+      $.get("https://www.thecocktaildb.com/api/json/v1/1/random.php", function (response) {
+        $(".content-first").append(`
+          <div>
+            <img class="drinksForDiv" src =${response.drinks[i].strDrinkThumb}>
+            <div class="drinksForDivTextContent">
+              <h5 class="heading">\"${response.drinks[i].strDrink}\"</h5>
+              <h5 class="heading"><u>Ingredients:</u></h5>
+                <ul>
+                  <li>${response.drinks[i].strIngredient1}</li>
+                  <li>${response.drinks[i].strIngredient2}</li>
+                  <li>${response.drinks[i].strIngredient3}</li>
+                </ul>
+            </div>
           </div>
-        </div>
+  
+          <button class="save btn-danger">Save</button>`);
+          apiDrink.push({
+            "cocktail_name": response.drinks[i].strDrink,
+            "ingredients" : `${response.drinks[i].strIngredient1}, ${response.drinks[i].strIngredient2}, ${response.drinks[i].strIngredient3}`,
+           });
+           
+           $('.save').on('click', function(){
+            $(".rightsideTwo").append(`<div class = "saved"><p class = pinnedText>${response.drinks[i].strDrink}</p></div>`)
+          });
+      });
 
-        <button class="save btn-danger">Save</button>`);
-        apiDrink.push({
-          "cocktail_name": response.drinks[0].strDrink,
-          "ingredients" : `${response.drinks[0].strIngredient1}, ${response.drinks[0].strIngredient2}, ${response.drinks[0].strIngredient3}`,
-         });
-         
-         $('.save').on('click', function(){
-          $(".rightsideTwo").append(`<div class = "saved"><p>${response.drinks[0].strDrink}</p><button class="save btn-danger">Save</button></div>`)
-        });
-    });
+
+    }
   };
 
 

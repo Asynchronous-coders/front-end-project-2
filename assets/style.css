@@ -89,7 +89,7 @@ margin-top: 3%;
     
 .profilebtn{
     float: right;
-    margin-left: 64%;
+    margin-left: 55%;
 }
 
 .go{
@@ -208,7 +208,10 @@ margin-top: 3%;
     text-align: left;
     margin-left: 1%;
     }
-
+    .pinnedText{
+        text-align: center;
+        padding-top: 1%;
+    }
     /* End body attributes
 
 
@@ -284,8 +287,8 @@ border: black groove 1px;
 .glass-00{
     content: url('../images/glass-00.png');
     background-size: cover;
-    height: 50px;
-    width: 50px;
+    height: 1%;
+    width: 1%;
     border: rgba(0, 0, 0, 0.432) groove 1px;
     align-self: center;
 }
@@ -293,8 +296,8 @@ border: black groove 1px;
 .glass-30{
     content: url('../images/glass-30.png');
     background-size: cover;
-    height: 50px;
-    width: 50px;
+    height: 1%;
+    width: 1%;
     border: rgba(0, 0, 0, 0.432) groove 1px;
     align-self: center;
 }
@@ -302,8 +305,8 @@ border: black groove 1px;
 .glass-60{
     content: url('../images/glass-60.png');
     background-size: cover;
-    height: 50px;
-    width: 50px;
+    height: 1%;
+    width: 1%;
     border: rgba(0, 0, 0, 0.432) groove 1px;
     align-self: center;
 }
@@ -311,8 +314,8 @@ border: black groove 1px;
 .glass-100{
     content: url('../images/glass-100.png');
     background-size: cover;
-    height: 50px;
-    width: 50px;
+    height: 1%;
+    width: 1%;
     border: rgba(0, 0, 0, 0.432) groove 1px;
     align-self: center;
 }

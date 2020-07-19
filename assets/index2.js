@@ -8,7 +8,7 @@ const searchByName = (drinkName) => {
             <div class="drinksForDivTextContent">            
             <h5 class='heading'><u>Ingredients:</u></h5>
               <ul class="ings">
-              <li>${data.drinks[0].strIngredient1}</li>
+// <!-- whale make these the ajax for the drinks in the html modal--!> //            <li>${data.drinks[0].strIngredient1}</li>
               <li>${data.drinks[0].strIngredient2}</li>
               <li>${data.drinks[0].strIngredient3}</li>
               </ul>
@@ -63,3 +63,4 @@ $(document).on('click', '#search', function () {
     drinkName = $('#userInput').val();
     searchByName(drinkName);
 });
+// make an on search for the search that opens a modal //
