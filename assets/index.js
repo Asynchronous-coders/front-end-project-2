@@ -211,8 +211,8 @@ $(document).ready(function () {
   // corona_cocktail calls
 function saveCocktail(apiDrink) {
   $.post(
-    // "http://localhost:9000/cocktail",
-    "https://backend-project-2.herokuapp.com/cocktail",
+    "http://localhost:9000/cocktail",
+    //"https://backend-project-2.herokuapp.com/cocktail",
     apiDrink[0],
   );
 }
@@ -223,8 +223,8 @@ function saveCocktail(apiDrink) {
   function getReviewsByCocktail(cocktail_id) {
     $.ajax({
       async: true,
-      url: `https://backend-project-2.herokuapp.com/reviews/cocktail/${cocktail_id}`,
-      // url: `http://localhost:9000/reviews/cocktail/${cocktail_id}`,
+      //url: `https://backend-project-2.herokuapp.com/reviews/cocktail/${cocktail_id}`,
+       url: `http://localhost:9000/reviews/cocktail/${cocktail_id}`,
       method: "GET"
     }).then((res) => {
       const reviews = res;
@@ -240,8 +240,8 @@ function saveCocktail(apiDrink) {
   function deleteReviewById(review_id) {
     $.ajax({
       method: "DELETE",
-      url: `https://backend-project-2.herokuapp.com/reviews/${review_id}`,
-      // url:`http://localhost:9000/review/${review_id}`,
+      //url: `https://backend-project-2.herokuapp.com/reviews/${review_id}`,
+       url:`http://localhost:9000/review/${review_id}`,
       success: function() {
         window.location.reload();
       }
@@ -272,8 +272,8 @@ function saveCocktail(apiDrink) {
   function getAllReviews() {
     $.ajax({
       async: true,
-      url: `https://backend-project-2.herokuapp.com/reviews`,
-      // url: `http://localhost:9000/reviews`,
+      //url: `https://backend-project-2.herokuapp.com/reviews`,
+       url: `http://localhost:9000/reviews`,
       method: "GET"
     }).then((res) => {
       const reviews = res;
