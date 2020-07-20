@@ -81,7 +81,7 @@
     <div class="col-md-12 intro-pic">
       <div class="searchBar-pic">
       <form class="form-inline d-flex justify-content-center md-form form-sm mt-0">
-        <input class="form-control form-control-sm ml-3 w-75" id="userInput" type="text" placeholder="Search" aria-label="Search">
+        <input class="form-control form-control-sm ml-3 w-75" id="userInput" type="text" placeholder="Search a cocktail or ingredient" aria-label="Search">
         <i class="fas fa-search searchBtn btn" aria-hidden="true" id="search"></i>
       </form>
     </div>
@@ -111,10 +111,54 @@
               <div class="line"></div>
             </div>
           <div class="col-md-6 rightsideTwo">
-            <p class="rightsideTextTwo">Recent Reviews</p>
+            <p class="rightsideTextTwo">Submit a Recipe</p>
             <div class="line"></div>
+            <!--Start submit recipe content-->
+            <form>
+              <div class="form-group">
+                <label for="exampleFormControlInput1">Cocktail Name</label>
+                <input type="email" class="form-control" id="cocktailName" placeholder="name@example.com">
+              </div>
+                <div class="form-group">
+                  <label for="exampleFormControlTextarea1">Directions</label>
+                  <textarea class="form-control"  id="cocktailDirections" rows="3"></textarea>
+                </div>
+              </form>
+              <div class="form-group">
+                <label for="exampleFormControlTextarea1">Ingredients</label>
+                <textarea class="form-control"  id="cocktailIngredients" rows="3"></textarea>
+              </div>
+            </form>
+            <!--End submit recipe content-->
+
+            <!--submit recipe button-->
+            <button type="button" class="btn btn-outline-warning" id="submitRecipe" data-toggle="modal" data-target="#exampleModal">Submit</button>
           </div>
         </div>
+
+
+
+        <!--submit recipe modal-->
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Thank You</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+              Your drink was saved!
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-warning" data-dismiss="modal">Ok</button>
+            </div>
+            </div>
+        </div>
+        </div>
+
             <div class="row body-third">
             <div class="col-md-12 reviewDiv">
               <p class="rightsideTextTwo">Recent Reviews</p>
@@ -260,7 +304,8 @@
   </div>
   <div class="modal-footer">
     <div class="row">
-      <button class="btn btn-mdb-color btn-rounded btn-sm my-0 ml-sm-2 submit" type="submit">Save!</button>
+      <button type="button" class="btn btn-outline-warning" type="submit">Save!</button>
+
     </div>
     </div>
   </div>
