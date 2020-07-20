@@ -117,22 +117,24 @@
             <form>
               <div class="form-group">
                 <label for="exampleFormControlInput1">Cocktail Name</label>
-                <input type="email" class="form-control" id="cocktailName" placeholder="name@example.com">
+                <input type="email" class="form-control" id="cocktailName">
               </div>
+              <div class="form-group">
+                <label for="exampleFormControlTextarea1">Ingredients</label>
+                <textarea class="form-control"  id="cocktailIngredients" rows="3"></textarea>
+              </div>
+              </form>
                 <div class="form-group">
                   <label for="exampleFormControlTextarea1">Directions</label>
                   <textarea class="form-control"  id="cocktailDirections" rows="3"></textarea>
                 </div>
               </form>
-              <div class="form-group">
-                <label for="exampleFormControlTextarea1">Ingredients</label>
-                <textarea class="form-control"  id="cocktailIngredients" rows="3"></textarea>
-              </div>
-            </form>
             <!--End submit recipe content-->
 
             <!--submit recipe button-->
             <button type="button" class="btn btn-outline-warning" id="submitRecipe" data-toggle="modal" data-target="#exampleModal">Submit</button>
+            <!--show user submissions button-->
+            <button type="button" class="btn btn-outline-warning" id="userRecipes">View User Submissions</button>
           </div>
         </div>
 
