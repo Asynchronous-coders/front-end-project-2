@@ -1,115 +1,36 @@
 $(document).ready(function () {
   let apiDrink = [];
-  // List Filters EndPoint
-
-  function listFilters() {
-    $.ajax({
-      "async": true,
-      "crossDomain": true,
-      "url": "https://the-cocktail-db.p.rapidapi.com/list.php?a=list",
-      "method": "GET",
-      "headers": {
-        "x-rapidapi-host": "the-cocktail-db.p.rapidapi.com",
-        "x-rapidapi-key": "800dedb80dmsh5623edb79c19968p10818fjsnd60acfd537d3"
-      }
-
-    }).then(function (response) {
-      for (i = 0; i < 3; i++) {
-        $('.filterOption').append(`<a class="dropdown-item" href="${response.drinks[i].strAlcoholic}">${response.drinks[i].strAlcoholic}</a>`)
-      }
-    });
-  };
-  listFilters();
-  // End Filters Endpoint
-
-  // List Ingredients
-
-  function listIngredients() {
-    $.ajax({
-      async: true,
-      url: "https://the-cocktail-db.p.rapidapi.com/list.php?i=list",
-      method: "GET",
-      headers: {
-        "x-rapidapi-host": "the-cocktail-db.p.rapidapi.com",
-        "x-rapidapi-key": "800dedb80dmsh5623edb79c19968p10818fjsnd60acfd537d3",
-      }
-    }).then(function (response) {
-      for (i = 0; i <= 30; i++) {
-        $('.ingredientsOption').append(`<a class="dropdown-item" href="${response.drinks[i].strIngredient1}">${response.drinks[i].strIngredient1}</a>`)
-      };
-    })
-  };
-  listIngredients();
-  // End Ingredient List
-
-  // List Glasses List
-
-  function listGlasses() {
-    $.ajax({
-      async: true,
-      url: "https://the-cocktail-db.p.rapidapi.com/list.php?g=list",
-      method: "GET",
-      headers: {
-        "x-rapidapi-host": "the-cocktail-db.p.rapidapi.com",
-        "x-rapidapi-key": "800dedb80dmsh5623edb79c19968p10818fjsnd60acfd537d3",
-      }
-    }).then(function (response) {
-      for (i = 0; i <= 31; i++) {
-        $('.glassesOption').append(`<a class="dropdown-item" href="${response.drinks[i].strGlass}">${response.drinks[i].strGlass}</a>`)
-      }
-    });
-  }
-  listGlasses();
-  // End Glasses List
-
-  // List Glasses List
-
-  function listCategories() {
-    $.ajax({
-      async: true,
-      url: "https://the-cocktail-db.p.rapidapi.com/list.php?c=list",
-      method: "GET",
-      headers: {
-        "x-rapidapi-host": "the-cocktail-db.p.rapidapi.com",
-        "x-rapidapi-key": "800dedb80dmsh5623edb79c19968p10818fjsnd60acfd537d3",
-      }
-    }).then(function (response) {
-      for (i = 0; i <= 3; i++) {
-        $('.categoriesOption').append(`<a class="dropdown-item" href="${response.drinks[i].strCategory}">${response.drinks[i].strCategory}</a>`)
-      }
-    });
-  };
-  listCategories();
-  // End Glasses List
-  // Drinks for Div 
 
   function getDrinksForDiv() {
-    $.get("https://www.thecocktaildb.com/api/json/v1/1/random.php", function (response) {
-      $(".content-first").append(`
-        <div>
-          <img class="drinksForDiv" src =${response.drinks[0].strDrinkThumb}>
-          <div class="drinksForDivTextContent">
-            <h5 class="heading">\"${response.drinks[0].strDrink}\"</h5>
-            <h5 class="heading"><u>Ingredients:</u></h5>
-              <ul>
-                <li>${response.drinks[0].strIngredient1}</li>
-                <li>${response.drinks[0].strIngredient2}</li>
-                <li>${response.drinks[0].strIngredient3}</li>
-              </ul>
+    for(i= 0 ; i <=2 ; i++){
+      $.get("https://www.thecocktaildb.com/api/json/v1/1/random.php", function (response) {
+        $(".content-first").append(`
+          <div>
+            <img class="drinksForDiv" src =${response.drinks[i].strDrinkThumb}>
+            <div class="drinksForDivTextContent">
+              <h5 class="heading">\"${response.drinks[i].strDrink}\"</h5>
+              <h5 class="heading"><u>Ingredients:</u></h5>
+                <ul>
+                  <li>${response.drinks[i].strIngredient1}</li>
+                  <li>${response.drinks[i].strIngredient2}</li>
+                  <li>${response.drinks[i].strIngredient3}</li>
+                </ul>
+            </div>
           </div>
-        </div>
-        <button class="save btn-danger">Save</button>
-        `);
-      apiDrink.push({
-        "cocktail_name": response.drinks[0].strDrink,
-        "ingredients": `${response.drinks[0].strIngredient1}, ${response.drinks[0].strIngredient2}, ${response.drinks[0].strIngredient3}`,
+  
+          <button class="save btn-danger">Save</button>`);
+          apiDrink.push({
+            "cocktail_name": response.drinks[i].strDrink,
+            "ingredients" : `${response.drinks[i].strIngredient1}, ${response.drinks[i].strIngredient2}, ${response.drinks[i].strIngredient3}`,
+           });
+           
+           $('.save').on('click', function(){
+            saveCocktail(apiDrink)
+          });
       });
 
-      $('.save').on('click', function () {
-        console.log(apiDrink[0]);
-        saveCocktail(apiDrink)
-      });
-    });
+
+    }
   };
 
 
@@ -290,25 +211,7 @@ function saveCocktail(apiDrink) {
   getAllReviews();
   getDrinksForDiv();
 
-  // on clicks
-  $(document).on("click", ".login-modal", function () {
-    $("#myModal").modal('show');
-    return false
-  });
-  // end login button / modal function
-
-  // sign up button start
-  $(document).on("click", ".signUp", function () {
-    $("#signUpModal").modal('show');
-    $('#myModal').modal('hide')
-    return false
-  });
-  //end sign up button
-
-  // Search Button
-  $(document).on("click", ".go", function () {
-    console.log("searched")
-  });
+  
 
   $(document).on("click", ".delete-review", (btn) => {
     const reviewId = $(btn.target).attr("value");
