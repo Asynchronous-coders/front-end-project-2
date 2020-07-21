@@ -126,6 +126,7 @@ $(document).ready(function () {
           </div>
         </div> 
       </div>
+
       <!-- Modal -->
       <div class="modal fade" id="editModal-${info.id}" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -156,7 +157,7 @@ $(document).ready(function () {
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-              <button type="button" class="btn btn-warning saveReviewEdit">Save changes</button>
+              <button type="button" class="btn btn-warning saveReviewEdit" value="${info.id}">Save changes</button>
             </div>
           </div>
         </div>
@@ -239,8 +240,11 @@ $(document).ready(function () {
         appendReviewDetails(info);
         const rate = info.rate_cocktail;
         appendImgGlassRate(rate, info.id);
-
       }
+      $('.saveReviewEdit').on('click',(btn)=>{
+        const btnId = $(btn.target).attr('value');
+        console.log(btnId);
+      });
 
     });
   };
@@ -253,6 +257,8 @@ $(document).ready(function () {
     const reviewId = $(btn.target).attr("value");
     deleteReviewById(reviewId);
   });
+
+  
 
 
 });
