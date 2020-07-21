@@ -137,16 +137,17 @@ $(document).ready(function () {
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
+
             <div class="modal-body">
               <form>
                 <div class="form-group">
-                  <label for="inputReview">Review</label>
-                  <input type="text" class="form-control" id="inputReview" placeholder="${info.review_cocktail}">
+                  <label for="inputReview-${info.id}">Review:</label>
+                  <input type="text" class="form-control" id="inputReview-${info.id}" value="${info.review_cocktail}">
                 </div>
                 <div class="form-row">
                   <div class="form-group col-md-4">
-                    <label for="inputRate">Rate</label>
-                    <select id="inputRate" class="form-control">
+                    <label for="inputRate-${info.id}">Rate:</label>
+                    <select id="inputRate-${info.id}" class="form-control">
                       <option selected>${info.rate_cocktail}</option>
                       <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
                       <option>6</option><option>7</option><option>8</option><option>9</option><option>10</option>
@@ -155,6 +156,7 @@ $(document).ready(function () {
                 </div>
               </form>
             </div>
+
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
               <button type="button" class="btn btn-warning saveReviewEdit" value="${info.id}">Save changes</button>
@@ -222,6 +224,7 @@ $(document).ready(function () {
       data: updated_review
     }).then((res) => {
       console.log(res);
+      window.location.reload();
     });
   };
 
@@ -241,9 +244,16 @@ $(document).ready(function () {
         const rate = info.rate_cocktail;
         appendImgGlassRate(rate, info.id);
       }
+      //this button is tied to the modals that update the reviews from the "Recent Reviews" on the site
       $('.saveReviewEdit').on('click',(btn)=>{
         const btnId = $(btn.target).attr('value');
-        console.log(btnId);
+
+        const updateReviewObj = {
+          review_cocktail: $(`#inputReview-${btnId}`).val(),
+          rate_cocktail: $(`#inputRate-${btnId}`).val()
+        }
+        console.log(updateReviewObj);
+        patchReviewById(btnId, updateReviewObj);
       });
 
     });
