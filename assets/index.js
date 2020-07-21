@@ -84,35 +84,37 @@ $(document).ready(function () {
   // Drinks for Div 
 
   function getDrinksForDiv() {
-    for(i= 0 ; i <=2 ; i++){
       $.get("https://www.thecocktaildb.com/api/json/v1/1/random.php", function (response) {
-        $(".content-first").append(`
+        console.log(response)
+        $(".content-first-body").append(`
           <div>
-            <img class="drinksForDiv" src =${response.drinks[i].strDrinkThumb}>
+            <img class="drinksForDiv" src =${response.drinks[0].strDrinkThumb}>
             <div class="drinksForDivTextContent">
-              <h5 class="heading">\"${response.drinks[i].strDrink}\"</h5>
+              <h5 class="heading divDrinkHeading">\"${response.drinks[0].strDrink}\"</h5>
               <h5 class="heading"><u>Ingredients:</u></h5>
                 <ul>
-                  <li>${response.drinks[i].strIngredient1}</li>
-                  <li>${response.drinks[i].strIngredient2}</li>
-                  <li>${response.drinks[i].strIngredient3}</li>
+                  <li class = "divDrinkIngredient">${response.drinks[0].strIngredient1} &#40; ${response.drinks[0].strMeasure1} &#41; </li>
+                  <li class = "divDrinkIngredient">${response.drinks[0].strIngredient2} &#40; ${response.drinks[0].strMeasure2} &#41; </li>
+                  <li class = "divDrinkIngredient">${response.drinks[0].strIngredient3} &#40; ${response.drinks[0].strMeasure3} &#41; </li>
+                </ul>
+                <h5 class = "heading"><u>Directions:</u></h5>
+                <ul>
+                <li> ${response.drinks[0].strInstructions}
                 </ul>
             </div>
           </div>
   
           <button class="save btn-danger">Save</button>`);
           apiDrink.push({
-            "cocktail_name": response.drinks[i].strDrink,
-            "ingredients" : `${response.drinks[i].strIngredient1}, ${response.drinks[i].strIngredient2}, ${response.drinks[i].strIngredient3}`,
+            "cocktail_name": response.drinks[0].strDrink,
+            "ingredients" : `${response.drinks[0].strIngredient1}, ${response.drinks[0].strIngredient2}, ${response.drinks[0].strIngredient3}`,
+            "directions" : response.drinks[0].strInstructions
            });
-           
+           // *******Logan******* Change this to add it to the Div with the other pinned drinks
            $('.save').on('click', function(){
-            $(".rightsideTwo").append(`<div class = "saved"><p class = pinnedText>${response.drinks[i].strDrink}</p></div>`)
+            $(".leftsideTwo").append(`<div class = "saved"><p class = pinnedText>${response.drinks[0].strDrink}</p></div>`)
           });
       });
-
-
-    }
   };
 
 
@@ -210,6 +212,19 @@ $(document).ready(function () {
       `);
     
   }
+  // Logan pinned.cocktail_name     pinned.ingredients       pinned.directions 
+  function appendPinnedDrinks(pinned) {
+    $('.leftsideTwo').append(`
+    <div class = "pinnedDiv">
+    <p>${pinned.cocktail_name}</p>
+    <p> ${pinned.ingredients} </p>
+    <p>${pinned.directions} </p>
+    <button type="button" class="btn btn-outline-warning" data-toggle="modal">Submit A Review</button>
+    <div>`)
+  }
+  // Logan
+
+
 
   // corona_cocktail calls
 function saveCocktail(apiDrink) {
@@ -270,6 +285,21 @@ function saveCocktail(apiDrink) {
     });
   };
 
+// Get Pinned Drinks for Div
+function getPinnedDrinks(id){
+  $.ajax({
+      //url: `https://backend-project-2.herokuapp.com/cocktail `,
+      url: `http://localhost:9000/cocktail/28`,
+      method: "GET"
+  }).then((res)=> {
+    const cocktail = res;
+    console.log(res);
+    for(const id in cocktail){
+      const pinned = cocktail[id];
+      appendPinnedDrinks(pinned)
+    }
+  })
+}
 
   // Reviews for Div
   function getAllReviews() {
@@ -292,6 +322,7 @@ function saveCocktail(apiDrink) {
   };
   getAllReviews();
   getDrinksForDiv();
+  getPinnedDrinks();
 
   // on clicks
   $(document).on("click", ".login-modal", function () {
@@ -308,10 +339,11 @@ function saveCocktail(apiDrink) {
   });
   //end sign up button
 
-  // Search Button
-  $(document).on("click", ".go", function () {
-    console.log("searched")
-  });
+  // Refresh
+  $(document).on("click", ".refreshBtn", (btn) => {
+    $(".content-first-body").empty();
+    getDrinksForDiv();
+  })
 
   $(document).on("click", ".delete-review", (btn) => {
     const reviewId = $(btn.target).attr("value");

@@ -100,22 +100,22 @@
         </div>
       </div>
       <div class="row body-first">
+        <button type="button" class="btn btn-default btn-sm refreshBtn">
+          <span class="glyphicon glyphicon-refresh"></span> Refresh
+        </button>
         <div class="col-md-12 content-first">
-              <p class="content-first-text">Drinks for any occasion</p>
+              <p class="content-first-text">Random Drink of the Day</p>
               <div class="line"></div>
+              <div class="content-first-body"> </div>
          </div>
       </div>
        <div class="row body-second">
           <div class="col-md-6 leftsideTwo">
-              <h3 class="leftsideTextTwo">Based on your taste</h3>
+              <h3 class="leftsideTextTwo">Pinned Drinks</h3>
               <div class="line"></div>
             </div>
           <div class="col-md-6 rightsideTwo">
-<<<<<<< HEAD
-            <p class="pinnedDrinks">Pinned Drinks</p>
-=======
             <p class="rightsideTextTwo">Submit a Recipe</p>
->>>>>>> 563185036861bfd93de8c173515576c413469b34
             <div class="line"></div>
             <!--Start submit recipe content-->
             <form>
@@ -279,19 +279,19 @@
 <div class="modal-content">
   <div class="modal-header">
     <button type="button" class="exit" data-dismiss="modal">&times;</button>
-    <p class="modal-title">Name:<p> <p class="drinknameModal"></p>
+    <h3 class="modal-title">Name:</h3> <h5 class="drinknameModal"></h5>
   </div>
   <div class="modal-body">
-    <div class="row username">
+    <div class="row">
       <div class="col-md-4">
           <p>PHOTO HERE</p>
         </div>
         <div class="col-md-8">
-          <p class="photoModal"></p>
+          <div class="photoModal"></div>
           
         </div>
       </div>
-      <div class="row password">
+      <div class="row">
         <div class="col-md-4">
             <p>Directions:</p>
           </div>
@@ -299,9 +299,14 @@
             <p class="directionsModal"></p>
           </div>
         </div>
-        <div class="row re-password">
-          <div class="col-md-4">
+        <div class="row">
+          <div class="col-md-6">
               <p>Ingredients:</p>
+              <ul>
+                <li class="ingModalOne"></li>
+                <li class="ingModalTwo"></li>
+                <li class="ingModalThree"></li>
+              </ul>
             </div>
             <div class="col-md-8">
               <p class="ingredientsModal"></p>

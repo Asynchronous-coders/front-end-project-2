@@ -105,6 +105,11 @@ margin-top: 3%;
     height: 360px;
     background-color: white;
     width: 100%;
+    overflow: auto;
+}
+.refreshBtn{
+    float: right;
+    border: solid black 1px;
 }
 .drinksForDiv{
     height: 80%;
@@ -112,16 +117,14 @@ margin-top: 3%;
     padding-left: 8%;
     float: left;
 }
-.drinksForRightDiv{
-    height: 80%;
-    width: 30%;
-    padding-left: 8%;
+.divDrinkHeading{
+    padding-bottom: 2%;
 }
-.drinksForLeftDiv{
-    height: 100%;
-    width: 50%;
-    padding-left: 8%;
-    float: left;
+.drinknameModal{
+    text-align: left;
+}
+.pinnedDiv{
+    border: solid rgb(240, 220, 39) 1px;
 }
 .content-first-text{
     text-align: center;
@@ -214,6 +217,10 @@ margin-top: 3%;
     text-align: left;
     margin-left: 1%;
     }
+    .imgModal{
+        height: 100px;
+        width: 100px;
+    }
     .pinnedText{
         text-align: center;
         padding-top: 1%;
@@ -251,6 +258,18 @@ border: black groove 1px;
 }
 
  /* End Modal Sign Up
+
+ /* Search Modal */
+.ingModalOne{
+float: left;
+}
+.ingModalTwo{
+float: left;
+}
+.ingModalThree{
+float: left;
+}
+ /* End Search Modal    */
 
 /* footer attributes */
 .footer{
