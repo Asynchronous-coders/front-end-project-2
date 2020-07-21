@@ -94,7 +94,10 @@ $(document).ready(function () {
         getAllCocktails();
     });
 
-    // List Filters EndPoint
+
+
+    
+// List Filters EndPoint
 
   function listFilters() {
     $.ajax({
