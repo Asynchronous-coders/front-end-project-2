@@ -30,7 +30,8 @@ $(document).ready(function () {
       });
 
       $('.save').on('click', function () {
-        saveCocktail(apiDrink)
+        saveCocktail(apiDrink);
+        getPinnedDrinks(response.drinks[0].strDrink);
       });
     });
 
@@ -246,10 +247,10 @@ $(document).ready(function () {
   };
 
 // Get Pinned Drinks for Div
-function getPinnedDrinks(id){
+function getPinnedDrinks(cocktailName){
   $.ajax({
       //url: `https://backend-project-2.herokuapp.com/cocktail `,
-      url: `http://localhost:9000/cocktail/28`,
+      url: `http://localhost:9000/cocktail/${cocktailName}`,
       method: "GET"
   }).then((res)=> {
     const cocktail = res;
@@ -301,6 +302,11 @@ function getPinnedDrinks(id){
     deleteReviewById(reviewId);
   });
 
+// Refresh
+$(document).on("click", ".refreshBtn", (btn) => {
+  $(".content-first-body").empty();
+  getDrinksForDiv();
+})
   
 
 
