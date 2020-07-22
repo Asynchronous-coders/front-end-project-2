@@ -2,35 +2,36 @@ $(document).ready(function () {
   let apiDrink = [];
 
   function getDrinksForDiv() {
-    for(i= 0 ; i <=2 ; i++){
-      $.get("https://www.thecocktaildb.com/api/json/v1/1/random.php", function (response) {
-        $(".content-first").append(`
+
+    $.get("https://www.thecocktaildb.com/api/json/v1/1/random.php", function (response) {
+      $(".content-first").append(`
           <div>
-            <img class="drinksForDiv" src =${response.drinks[i].strDrinkThumb}>
+            <img class="drinksForDiv" src =${response.drinks[0].strDrinkThumb}>
             <div class="drinksForDivTextContent">
-              <h5 class="heading">\"${response.drinks[i].strDrink}\"</h5>
+              <h5 class="heading">\"${response.drinks[0].strDrink}\"</h5>
               <h5 class="heading"><u>Ingredients:</u></h5>
                 <ul>
-                  <li>${response.drinks[i].strIngredient1}</li>
-                  <li>${response.drinks[i].strIngredient2}</li>
-                  <li>${response.drinks[i].strIngredient3}</li>
+                  <li>${response.drinks[0].strIngredient1}</li>
+                  <li>${response.drinks[0].strIngredient2}</li>
+                  <li>${response.drinks[0].strIngredient3}</li>
                 </ul>
             </div>
           </div>
   
           <button class="save btn-danger">Save</button>`);
-          apiDrink.push({
-            "cocktail_name": response.drinks[i].strDrink,
-            "ingredients" : `${response.drinks[i].strIngredient1}, ${response.drinks[i].strIngredient2}, ${response.drinks[i].strIngredient3}`,
-           });
-           
-           $('.save').on('click', function(){
-            saveCocktail(apiDrink)
-          });
+      apiDrink.push({
+        "cocktail_name": response.drinks[0].strDrink,
+        "ingredients": `${response.drinks[0].strIngredient1}, ${response.drinks[0].strIngredient2}, ${response.drinks[0].strIngredient3}`,
+        "directions": response.drinks[0].strInstructions
       });
 
+      $('.save').on('click', function () {
+        saveCocktail(apiDrink)
+      });
+    });
 
-    }
+
+
   };
 
 
@@ -118,25 +119,63 @@ $(document).ready(function () {
             <div class="row review-cocktail">${info.review_cocktail}</div>
             <div class="row" value="${info.id}" id="${info.id}">
               <div class="col-md-3"></div>
-              <button class="btn-primary edit-review${info.id}">Edit</button>
+              <button type="button" class="btn btn-outline-warning mb-2" data-toggle="modal" data-target="#editModal-${info.id}">Edit</button>
               <div class="col-md-2"></div>
-              <button class="btn-danger delete-review" value="${info.id}" id="${info.id}">Delete</button>
+              <button class="btn btn-outline-danger mb-2 delete-review" value="${info.id}" id="${info.id}">Delete</button>
             </div>
           </div>
         </div> 
       </div>
+
+      <!-- Modal -->
+      <div class="modal fade" id="editModal-${info.id}" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="editModalLabel">Edit review</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+
+            <div class="modal-body">
+              <form>
+                <div class="form-group">
+                  <label for="inputReview-${info.id}">Review:</label>
+                  <input type="text" class="form-control" id="inputReview-${info.id}" value="${info.review_cocktail}">
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-4">
+                    <label for="inputRate-${info.id}">Rate:</label>
+                    <select id="inputRate-${info.id}" class="form-control">
+                      <option selected>${info.rate_cocktail}</option>
+                      <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
+                      <option>6</option><option>7</option><option>8</option><option>9</option><option>10</option>
+                    </select>
+                  </div>
+                </div>
+              </form>
+            </div>
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+              <button type="button" class="btn btn-warning saveReviewEdit" value="${info.id}">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
       `);
-    
+
   }
 
   // corona_cocktail calls
-function saveCocktail(apiDrink) {
-  $.post(
-    "http://localhost:9000/cocktail",
-    //"https://backend-project-2.herokuapp.com/cocktail",
-    apiDrink[0],
-  );
-}
+  function saveCocktail(apiDrink) {
+    $.post(
+      "http://localhost:9000/cocktail",
+      //"https://backend-project-2.herokuapp.com/cocktail",
+      apiDrink[0],
+    );
+  }
 
 
   // login button / modal function
@@ -145,7 +184,7 @@ function saveCocktail(apiDrink) {
     $.ajax({
       async: true,
       //url: `https://backend-project-2.herokuapp.com/reviews/cocktail/${cocktail_id}`,
-       url: `http://localhost:9000/reviews/cocktail/${cocktail_id}`,
+      url: `http://localhost:9000/reviews/cocktail/${cocktail_id}`,
       method: "GET"
     }).then((res) => {
       const reviews = res;
@@ -157,13 +196,13 @@ function saveCocktail(apiDrink) {
       }
     });
   };
-  
+
   function deleteReviewById(review_id) {
     $.ajax({
       method: "DELETE",
       //url: `https://backend-project-2.herokuapp.com/reviews/${review_id}`,
-       url:`http://localhost:9000/review/${review_id}`,
-      success: function() {
+      url: `http://localhost:9000/review/${review_id}`,
+      success: function () {
         window.location.reload();
       }
     });
@@ -185,6 +224,7 @@ function saveCocktail(apiDrink) {
       data: updated_review
     }).then((res) => {
       console.log(res);
+      window.location.reload();
     });
   };
 
@@ -194,7 +234,7 @@ function saveCocktail(apiDrink) {
     $.ajax({
       async: true,
       //url: `https://backend-project-2.herokuapp.com/reviews`,
-       url: `http://localhost:9000/reviews`,
+      url: `http://localhost:9000/reviews`,
       method: "GET"
     }).then((res) => {
       const reviews = res;
@@ -203,20 +243,32 @@ function saveCocktail(apiDrink) {
         appendReviewDetails(info);
         const rate = info.rate_cocktail;
         appendImgGlassRate(rate, info.id);
-
       }
-      
+      //this button is tied to the modals that update the reviews from the "Recent Reviews" on the site
+      $('.saveReviewEdit').on('click',(btn)=>{
+        const btnId = $(btn.target).attr('value');
+
+        const updateReviewObj = {
+          review_cocktail: $(`#inputReview-${btnId}`).val(),
+          rate_cocktail: $(`#inputRate-${btnId}`).val()
+        }
+        console.log(updateReviewObj);
+        patchReviewById(btnId, updateReviewObj);
+      });
+
     });
   };
   getAllReviews();
   getDrinksForDiv();
 
-  
+
 
   $(document).on("click", ".delete-review", (btn) => {
     const reviewId = $(btn.target).attr("value");
     deleteReviewById(reviewId);
-  });  
- 
- 
+  });
+
+  
+
+
 });
