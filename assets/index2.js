@@ -86,4 +86,95 @@ $(document).ready(function () {
         $(".rightsideTwo").empty();
         getAllCocktails();
     });
+
+
+
+    
+// List Filters EndPoint
+
+  function listFilters() {
+    $.ajax({
+      "async": true,
+      "crossDomain": true,
+      "url": "https://the-cocktail-db.p.rapidapi.com/list.php?a=list",
+      "method": "GET",
+      "headers": {
+        "x-rapidapi-host": "the-cocktail-db.p.rapidapi.com",
+        "x-rapidapi-key": "800dedb80dmsh5623edb79c19968p10818fjsnd60acfd537d3"
+      }
+
+    }).then(function (response) {
+      for (i = 0; i < 3; i++) {
+        $('.filterOption').append(`<a class="dropdown-item" href="${response.drinks[i].strAlcoholic}">${response.drinks[i].strAlcoholic}</a>`)
+      }
+    });
+  };
+  listFilters();
+  // End Filters Endpoint
+
+  // List Ingredients
+
+  function listIngredients() {
+    $.ajax({
+      async: true,
+      url: "https://the-cocktail-db.p.rapidapi.com/list.php?i=list",
+      method: "GET",
+      headers: {
+        "x-rapidapi-host": "the-cocktail-db.p.rapidapi.com",
+        "x-rapidapi-key": "800dedb80dmsh5623edb79c19968p10818fjsnd60acfd537d3",
+      }
+    }).then(function (response) {
+      for (i = 0; i <= 30; i++) {
+        $('.ingredientsOption').append(`<a class="dropdown-item" href="${response.drinks[i].strIngredient1}">${response.drinks[i].strIngredient1}</a>`)
+      };
+    })
+  };
+  listIngredients();
+  // End Ingredient List
+
+  // List Glasses List
+
+  function listGlasses() {
+    $.ajax({
+      async: true,
+      url: "https://the-cocktail-db.p.rapidapi.com/list.php?g=list",
+      method: "GET",
+      headers: {
+        "x-rapidapi-host": "the-cocktail-db.p.rapidapi.com",
+        "x-rapidapi-key": "800dedb80dmsh5623edb79c19968p10818fjsnd60acfd537d3",
+      }
+    }).then(function (response) {
+      for (i = 0; i <= 31; i++) {
+        $('.glassesOption').append(`<a class="dropdown-item" href="${response.drinks[i].strGlass}">${response.drinks[i].strGlass}</a>`)
+      }
+    });
+  }
+  listGlasses();
+  // End Glasses List
+
+  // List Glasses List
+
+  function listCategories() {
+    $.ajax({
+      async: true,
+      url: "https://the-cocktail-db.p.rapidapi.com/list.php?c=list",
+      method: "GET",
+      headers: {
+        "x-rapidapi-host": "the-cocktail-db.p.rapidapi.com",
+        "x-rapidapi-key": "800dedb80dmsh5623edb79c19968p10818fjsnd60acfd537d3",
+      }
+    }).then(function (response) {
+      for (i = 0; i <= 3; i++) {
+        $('.categoriesOption').append(`<a class="dropdown-item" href="${response.drinks[i].strCategory}">${response.drinks[i].strCategory}</a>`)
+      }
+    });
+  };
+  listCategories();
+  // End Glasses List
+
+
+
+
+
+
 });
