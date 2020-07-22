@@ -2,18 +2,22 @@ $(document).ready(function () {
   let apiDrink = [];
 
   function getDrinksForDiv() {
-
-    $.get("https://www.thecocktaildb.com/api/json/v1/1/random.php", function (response) {
-      $(".content-first").append(`
+      $.get("https://www.thecocktaildb.com/api/json/v1/1/random.php", function (response) {
+        console.log(response)
+        $(".content-first-body").append(`
           <div>
             <img class="drinksForDiv" src =${response.drinks[0].strDrinkThumb}>
             <div class="drinksForDivTextContent">
-              <h5 class="heading">\"${response.drinks[0].strDrink}\"</h5>
+              <h5 class="heading divDrinkHeading">\"${response.drinks[0].strDrink}\"</h5>
               <h5 class="heading"><u>Ingredients:</u></h5>
                 <ul>
-                  <li>${response.drinks[0].strIngredient1}</li>
-                  <li>${response.drinks[0].strIngredient2}</li>
-                  <li>${response.drinks[0].strIngredient3}</li>
+                  <li class = "divDrinkIngredient">${response.drinks[0].strIngredient1} &#40; ${response.drinks[0].strMeasure1} &#41; </li>
+                  <li class = "divDrinkIngredient">${response.drinks[0].strIngredient2} &#40; ${response.drinks[0].strMeasure2} &#41; </li>
+                  <li class = "divDrinkIngredient">${response.drinks[0].strIngredient3} &#40; ${response.drinks[0].strMeasure3} &#41; </li>
+                </ul>
+                <h5 class = "heading"><u>Directions:</u></h5>
+                <ul>
+                <li> ${response.drinks[0].strInstructions}
                 </ul>
             </div>
           </div>
@@ -26,7 +30,8 @@ $(document).ready(function () {
       });
 
       $('.save').on('click', function () {
-        saveCocktail(apiDrink)
+        saveCocktail(apiDrink);
+        getPinnedDrinks(response.drinks[0].strDrink);
       });
     });
 
@@ -167,6 +172,19 @@ $(document).ready(function () {
       `);
 
   }
+  // Logan pinned.cocktail_name     pinned.ingredients       pinned.directions 
+  function appendPinnedDrinks(pinned) {
+    $('.leftsideTwo').append(`
+    <div class = "pinnedDiv">
+    <p>${pinned.cocktail_name}</p>
+    <p> ${pinned.ingredients} </p>
+    <p>${pinned.directions} </p>
+    <button type="button" class="btn btn-outline-warning" data-toggle="modal">Submit A Review</button>
+    <div>`)
+  }
+  // Logan
+
+
 
   // corona_cocktail calls
   function saveCocktail(apiDrink) {
@@ -228,6 +246,21 @@ $(document).ready(function () {
     });
   };
 
+// Get Pinned Drinks for Div
+function getPinnedDrinks(cocktailName){
+  $.ajax({
+      //url: `https://backend-project-2.herokuapp.com/cocktail `,
+      url: `http://localhost:9000/cocktail/${cocktailName}`,
+      method: "GET"
+  }).then((res)=> {
+    const cocktail = res;
+    console.log(res);
+    for(const id in cocktail){
+      const pinned = cocktail[id];
+      appendPinnedDrinks(pinned)
+    }
+  })
+}
 
   // Reviews for Div
   function getAllReviews() {
@@ -260,6 +293,7 @@ $(document).ready(function () {
   };
   getAllReviews();
   getDrinksForDiv();
+  getPinnedDrinks();
 
 
 
@@ -268,6 +302,11 @@ $(document).ready(function () {
     deleteReviewById(reviewId);
   });
 
+// Refresh
+$(document).on("click", ".refreshBtn", (btn) => {
+  $(".content-first-body").empty();
+  getDrinksForDiv();
+})
   
 
 
